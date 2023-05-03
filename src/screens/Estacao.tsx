@@ -1,13 +1,19 @@
+import { Estacoes } from "@components/Estacoes";
 import { Header } from "@components/Header";
-import { Center, Text, VStack } from "native-base";
+import { FlatList, VStack } from "native-base";
+
 
 export function Estacao () {
+
+
+
+
     return (
         <VStack flex={1} bg='fundo'>
-            <Header />
-            <Center>
-                <Text>Estação</Text>
-            </Center>
+            <Header title="Estações" subtitle="45 estações"/>
+
+            <Estacoes />
         </VStack>
     );
 }
+

@@ -9,8 +9,10 @@ import {
   Lato_700Bold,
 } from "@expo-google-fonts/lato";
 import { THEME, config } from "@theme/index";
+
 import { Loading } from "@components/Loading";
-import { HomePage } from "@screens/HomePage";
+import { EstacaoDetails } from "@screens/EstacaoDetails";
+import { Estacao } from "@screens/Estacao";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,7 +28,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <HomePage /> : <Loading />}
+      {fontsLoaded ? <EstacaoDetails /> : <Loading />}
     </NativeBaseProvider>
   );
 }

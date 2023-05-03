@@ -1,10 +1,16 @@
-import { VStack } from "native-base";
+import { Box, Center, HStack, Heading, Text, VStack } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
 
-export function Header() {
+type Props = {
+  title: string;
+  subtitle: string;
+};
+
+export function Header({ title, subtitle }: Props) {
   return (
     <VStack
       pt={16}
-      pb={75}
+      pb={subtitle === "" ? 20 : 5}
       px={8}
       bg={{
         linearGradient: {
@@ -13,6 +19,31 @@ export function Header() {
           end: [1, 0],
         },
       }}
-    ></VStack>
+    >
+      {subtitle === "" ? (
+        <HStack justifyContent="space-between">
+          <HStack alignItems="center">
+            <MaterialIcons name="arrow-back-ios" size={20} color="white" />
+            <Text color="white" fontFamily="regular" fontSize="md">
+              {title}
+            </Text>
+          </HStack>
+          <Text color="white" fontFamily="regular" fontSize="md">
+            Editar
+          </Text>
+        </HStack>
+      ) : (
+        <>
+          <Center>
+            <Text color="white">{subtitle}</Text>
+          </Center>
+          <Box mt={5}>
+            <Heading color="white" fontFamily="bold">
+              {title}
+            </Heading>
+          </Box>
+        </>
+      )}
+    </VStack>
   );
 }
