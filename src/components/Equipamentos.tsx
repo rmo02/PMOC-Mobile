@@ -1,20 +1,15 @@
-import { HStack, Text, VStack } from "native-base";
+import { Box, HStack, Text, VStack } from "native-base";
 import { Button } from "./Button";
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
+import { Eletrica } from "./Eletrica";
+import { Refrigeracao } from "./Refrigeracao";
 
 export function Equipamentos () {
     return (
-        <VStack p={5} px={5} bg='white' marginX={5} mt={2} borderRadius={10}>
-        <Text color='blue.600' fontFamily='regular' fontSize='md'>Equipamentos</Text>
-        <HStack mt={3} justifyContent='space-between'>
-            <Text color='blue.200' fontFamily='regular'>Ramon Maia</Text>
-            <Text color='blue.200' fontFamily='regular'>TV Mirante</Text>
-            <Text fontWeight='bold' fontFamily='regular'>25/04/2023</Text>
-    
-        </HStack>
-    
-        <Text mt={2} color='gray.450'>Rua teste. 220 - Bairro teste - Cururupu, MA - 37560-252</Text>
-    
-        <Button title="Em Execução"/>
-    </VStack>
+        <VStack >
+            <Eletrica />
+            <Refrigeracao />
+        </VStack>
     );
 }
