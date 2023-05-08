@@ -63,7 +63,7 @@ export function EstacaoDetails() {
         </ScrollView>
       </Swiper>
 
-      <HStack
+      {/* <HStack
         position="absolute"
         bottom={10}
         left={0}
@@ -83,7 +83,7 @@ export function EstacaoDetails() {
             </Text>
           )
         )}
-      </HStack>
+      </HStack> */}
     </VStack>
   );
 }

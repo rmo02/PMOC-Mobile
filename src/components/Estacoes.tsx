@@ -1,12 +1,18 @@
 import { HStack, Text, VStack } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 
 export function Estacoes() {
-  return (
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
 
+  function HandleNavigateEstacaoDetail () {
+    navigation.navigate('estacaoDetails')
+  }
+
+  return (
     <VStack
       pt={5}
       pb={1}
@@ -16,7 +22,9 @@ export function Estacoes() {
       bgColor="white"
       borderRadius={7}
     >
-      <TouchableOpacity>
+      <TouchableOpacity 
+      onPress={() => HandleNavigateEstacaoDetail()}
+      >
         <HStack justifyContent="space-between" alignItems="center">
           <Text color="black" fontFamily="bold" fontSize="md">
             Estação Cururupu

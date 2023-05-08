@@ -11,8 +11,7 @@ import {
 import { THEME, config } from "@theme/index";
 
 import { Loading } from "@components/Loading";
-import { EstacaoDetails } from "@screens/EstacaoDetails";
-import { Estacao } from "@screens/Estacao";
+import { Routes } from "@routes/index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,7 +27,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <EstacaoDetails /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>
   );
 }
