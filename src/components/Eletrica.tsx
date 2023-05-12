@@ -1,14 +1,23 @@
 import { Box, HStack, Text, VStack } from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { useNavigation } from "@react-navigation/native";
 
 export function Eletrica () {
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+    function HandleNavigateEditareletrica () {
+      navigation.navigate('editarEletrica')
+    }
+
     return (
         <VStack px={5} mt={2}>
             <Text color='gray.300'>Elétrica</Text>
             <VStack bg='white' mt={2} borderRadius={10} py={2} px={5}>
 
-                <VStack>
+                <TouchableOpacity onPress={() => HandleNavigateEditareletrica()}>
                     <HStack alignItems='center'>
                         <Box bg='blue.600' borderRadius={50} alignItems='center' justifyContent='center' h={30} w={30}>
                             <Ionicons name="ios-pin" size={24} color="white" />
@@ -22,7 +31,7 @@ export function Eletrica () {
                         </Box>
                     </HStack>
                     <VStack borderTopWidth={0.5} mt={1}></VStack>
-                </VStack>
+                </TouchableOpacity>
 
                 <VStack mt={2}>
                     <HStack alignItems='center'>

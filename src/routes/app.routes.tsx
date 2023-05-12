@@ -15,6 +15,8 @@ import { Perfil } from "@screens/Perfil";
 import { Novo } from "@screens/Novo";
 import { ButtonNew } from "@components/ButtonNew";
 import { EstacaoDetails } from "@screens/EstacaoDetails";
+import { EditarEletrica } from "@screens/EditarEletrica";
+import { EditarAntena } from "@screens/EditarAntena";
 
 type AppRoutes = {
   monitor: undefined;
@@ -23,6 +25,8 @@ type AppRoutes = {
   estacao: undefined;
   perfil: undefined;
   estacaoDetails: undefined;
+  editarEletrica: undefined;
+  editarAntena: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -112,10 +116,22 @@ export function AppRoutes() {
         }}
       />
 
-      <Screen 
+      <Screen
         name="estacaoDetails"
         component={EstacaoDetails}
-        options={{tabBarButton: () => null}}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarEletrica"
+        component={EditarEletrica}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarAntena"
+        component={EditarAntena}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   );

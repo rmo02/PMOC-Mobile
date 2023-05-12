@@ -8,6 +8,9 @@ export const config = {
 
 export const THEME = extendTheme({
     colors: {
+      black: {
+        100: '#27272A'
+      },
       green: {
         700: '#00875F',
         400: '#059669',
@@ -24,6 +27,7 @@ export const THEME = extendTheme({
         250: '#C5C5C7',
         200: '#C4C4CC',
         100: '#E1E1E6',
+        50:  '#F1F5F9'
       },
       white: '#FFFFFF',
       red: {

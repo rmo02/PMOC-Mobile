@@ -2,8 +2,9 @@ import { Box, Center, HStack, Heading, Text, VStack } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
 type Props = {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
+ 
 };
 
 export function Header({ title, subtitle }: Props) {

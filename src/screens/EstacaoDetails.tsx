@@ -6,6 +6,7 @@ import { CardManutencao } from "@components/CardManutencao";
 import { Documentos } from "@components/Documentos";
 import { Equipamentos } from "@components/Equipamentos";
 import { Header } from "@components/Header";
+
 export function EstacaoDetails() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
