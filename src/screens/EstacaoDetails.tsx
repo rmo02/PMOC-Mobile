@@ -51,15 +51,15 @@ export function EstacaoDetails() {
         onIndexChanged={handleSlideChange}
         loop={false}
       >
-        <ScrollView mt={100}>
+        <ScrollView mt={110}>
           <CardManutencao />
         </ScrollView>
 
-        <ScrollView mt={100}>
+        <ScrollView mt={110}>
           <Equipamentos />
         </ScrollView>
 
-        <ScrollView mt={100}>
+        <ScrollView mt={110}>
           <Documentos />
         </ScrollView>
       </Swiper>

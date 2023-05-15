@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Button } from "./Button";
 
 
-export function EditAntenaForm () {
+export function EditReceptorForm () {
     return (
         
       <VStack
@@ -19,11 +19,12 @@ export function EditAntenaForm () {
     >
       <Center>
         <Heading color="blue.600" fontFamily="bold" fontSize="xl">
-          Antena
+          Receptor
         </Heading>
       </Center>
 
       <VStack>
+
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
             Tag
@@ -101,13 +102,14 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Gain
+            Canal
           </Text>
           <Input
             isRequired
             mt={2}
             bg="gray.50"
             borderWidth={0}
+            keyboardType="decimal-pad"
             h={12}
             placeholder="320"
             maxW="100%"
@@ -126,13 +128,14 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Fendas
+            Frequência
           </Text>
           <Input
             isRequired
             mt={2}
             bg="gray.50"
             borderWidth={0}
+            keyboardType="decimal-pad"
             h={12}
             placeholder="220"
             maxW="100%"
@@ -151,13 +154,14 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Tipo
+            Symbol Rate
           </Text>
           <Input
             isRequired
             mt={2}
             bg="gray.50"
             borderWidth={0}
+            keyboardType="decimal-pad"
             h={12}
             placeholder="220"
             maxW="100%"
@@ -176,7 +180,7 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            VR
+            Transmissor
           </Text>
           <Input
             mt={2}
@@ -200,7 +204,7 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Posição Torre
+            Parabólica
           </Text>
           <Input
             mt={2}

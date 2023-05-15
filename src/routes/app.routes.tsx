@@ -12,11 +12,29 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Manutencao } from "@screens/Manutencao";
 import { Estacao } from "@screens/Estacao";
 import { Perfil } from "@screens/Perfil";
+
 import { Novo } from "@screens/Novo";
 import { ButtonNew } from "@components/ButtonNew";
 import { EstacaoDetails } from "@screens/EstacaoDetails";
-import { EditarEletrica } from "@screens/EditarEletrica";
-import { EditarAntena } from "@screens/EditarAntena";
+
+import { CriarEditarEletrica } from "@screens/CriarEditarEletrica";
+import { CriarEditarAntena } from "@screens/CriarEditarAntena";
+import { CriarEditarAr } from "@screens/CriarEditarAr";
+
+import { CriarEditarExaustor } from "@screens/CriarEditarExaustor";
+import { CriarEditarSwitch } from "@screens/CriarEditarSwitch";
+import { CriarEditarTelemetria } from "@screens/CriarEditarTelemetria";
+
+import { CriarEditarDisjuntor } from "@screens/CriarEditarDisjuntor";
+import { CriarEditarParabolica } from "@screens/CriarEditarParabolica";
+import { CriarEditarReceptor } from "@screens/CriarEditarReceptor";
+
+import { CriarEditarTransmissor } from "@screens/CriarEditarTransmissor";
+import { CriarEditarCombinador } from "@screens/CriarEditarCombinador";
+import { CriarEditarCabo } from "@screens/CriarEditarCabo";
+
+import { CriarEditarTorre } from "@screens/CriarEditarTorre";
+import { CriarEditarDPS } from "@screens/CriarEditarDPS";
 
 type AppRoutes = {
   monitor: undefined;
@@ -25,8 +43,20 @@ type AppRoutes = {
   estacao: undefined;
   perfil: undefined;
   estacaoDetails: undefined;
-  editarEletrica: undefined;
-  editarAntena: undefined;
+  criareditarEletrica: undefined;
+  criareditarAntena: undefined;
+  criareditarAr: undefined;
+  criareditarExaustor: undefined;
+  criareditarSwitch: undefined;
+  criareditarTelemetria: undefined;
+  criareditarDisjuntor: undefined;
+  criareditarParabolica: undefined;
+  criareditarReceptor: undefined;
+  criareditarTransmissor: undefined;
+  criareditarCombinador: undefined;
+  criareditarCabo: undefined;
+  criareditarTorre: undefined;
+  criareditarDPS: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -123,14 +153,86 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="editarEletrica"
-        component={EditarEletrica}
+        name="criareditarEletrica"
+        component={CriarEditarEletrica}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="editarAntena"
-        component={EditarAntena}
+        name="criareditarAntena"
+        component={CriarEditarAntena}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarAr"
+        component={CriarEditarAr}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarExaustor"
+        component={CriarEditarExaustor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarSwitch"
+        component={CriarEditarSwitch}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarTelemetria"
+        component={CriarEditarTelemetria}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarDisjuntor"
+        component={CriarEditarDisjuntor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarParabolica"
+        component={CriarEditarParabolica}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarReceptor"
+        component={CriarEditarReceptor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarTransmissor"
+        component={CriarEditarTransmissor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarCombinador"
+        component={CriarEditarCombinador}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarCabo"
+        component={CriarEditarCabo}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarTorre"
+        component={CriarEditarTorre}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="criareditarDPS"
+        component={CriarEditarDPS}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>

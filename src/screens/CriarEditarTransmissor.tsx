@@ -1,13 +1,14 @@
 import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { EditAntenaForm } from "@components/EditAntenaForm";
+import { EditTransmissorForm } from "@components/EditTransmissorForm";
 
 
-export function EditarAntena() {
+export function CriarEditarTransmissor() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
 
     function HandleNavigateGoBack () {
@@ -37,15 +38,18 @@ export function EditarAntena() {
               </Text>
             </HStack>
           </TouchableOpacity>
-          <Heading ml="15%" pt={5} color="white" fontFamily="bold">
-            NBR001
+          <Center>
+          <Heading ml="10%" pt={5} color="white" fontFamily="bold">
+            Transmissor001
           </Heading>
+          </Center>
+
         </HStack>
       </VStack>
 
-      <EditAntenaForm />
+      <EditTransmissorForm />
 
-      <HStack marginX={5} justifyContent="center" zIndex={1} mt='520' marginBottom={10}>
+      <HStack marginX={5} justifyContent="center" zIndex={1} mt='1015' marginBottom={10}>
       <Button title="Excluir" w={160} bg='black.100' rounded={10}/>
       <Button title="Salvar" ml={4} w={160} bg='blue.200' rounded={10}/>
     </HStack>

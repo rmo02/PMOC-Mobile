@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Button } from "./Button";
 
 
-export function EditAntenaForm () {
+export function EditDPSForm () {
     return (
         
       <VStack
@@ -19,7 +19,7 @@ export function EditAntenaForm () {
     >
       <Center>
         <Heading color="blue.600" fontFamily="bold" fontSize="xl">
-          Antena
+          DPS001
         </Heading>
       </Center>
 
@@ -101,13 +101,14 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Gain
+            Corrente máxima
           </Text>
           <Input
             isRequired
             mt={2}
             bg="gray.50"
             borderWidth={0}
+            keyboardType="decimal-pad"
             h={12}
             placeholder="320"
             maxW="100%"
@@ -126,7 +127,7 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Fendas
+            Classe
           </Text>
           <Input
             isRequired
@@ -151,7 +152,7 @@ export function EditAntenaForm () {
 
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Tipo
+            Categoria do equipamento
           </Text>
           <Input
             isRequired
@@ -159,80 +160,7 @@ export function EditAntenaForm () {
             bg="gray.50"
             borderWidth={0}
             h={12}
-            placeholder="220"
-            maxW="100%"
-            InputRightElement={
-              <Pressable>
-                <Icon
-                  as={<Ionicons name="md-close-circle" />}
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                />
-              </Pressable>
-            }
-          />
-        </VStack>
-
-        <VStack mt={5}>
-          <Text color="blue.600" fontFamily="regular" fontSize="md">
-            VR
-          </Text>
-          <Input
-            mt={2}
-            bg="gray.50"
-            borderWidth={0}
-            h={12}
-            placeholder="220"
-            maxW="100%"
-            InputRightElement={
-              <Pressable>
-                <Icon
-                  as={<Ionicons name="md-close-circle" />}
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                />
-              </Pressable>
-            }
-          />
-        </VStack>
-
-        <VStack mt={5}>
-          <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Posição Torre
-          </Text>
-          <Input
-            mt={2}
-            bg="gray.50"
-            borderWidth={0}
-            h={12}
-            placeholder="220"
-            maxW="100%"
-            InputRightElement={
-              <Pressable>
-                <Icon
-                  as={<Ionicons name="md-close-circle" />}
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                />
-              </Pressable>
-            }
-          />
-        </VStack>
-
-        <VStack mt={5}>
-          <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Categoria equipamento
-          </Text>
-          <Input
-            isRequired
-            mt={2}
-            bg="gray.50"
-            borderWidth={0}
-            h={12}
-            placeholder="220"
+            placeholder="Elétrica"
             maxW="100%"
             InputRightElement={
               <Pressable>
@@ -257,7 +185,7 @@ export function EditAntenaForm () {
             bg="gray.50"
             borderWidth={0}
             h={12}
-            placeholder="Ramon"
+            placeholder="Elétrica"
             maxW="100%"
             InputRightElement={
               <Pressable>

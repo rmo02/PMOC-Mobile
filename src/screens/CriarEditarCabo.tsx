@@ -1,19 +1,13 @@
-import { Header } from "@components/Header";
-import {
-  HStack,
-  Heading,
-  ScrollView,
-  Text,
-  VStack,
-} from "native-base";
-import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { EditEletricaForm } from "@components/EditEletricaForm";
 import { Button } from "@components/Button";
-import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { EditCaboForm } from "@components/EditCaboForm";
 
-export function EditarEletrica() {
+
+export function CriarEditarCabo() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
 
     function HandleNavigateGoBack () {
@@ -44,14 +38,14 @@ export function EditarEletrica() {
             </HStack>
           </TouchableOpacity>
           <Heading ml="15%" pt={5} color="white" fontFamily="bold">
-            NBR001
+            Cabo 001
           </Heading>
         </HStack>
       </VStack>
 
-      <EditEletricaForm />
+      <EditCaboForm />
 
-      <HStack marginX={5} justifyContent="center" zIndex={1} mt='520' marginBottom={10}>
+      <HStack marginX={5} justifyContent="center" zIndex={1} mt='720' marginBottom={10}>
       <Button title="Excluir" w={160} bg='black.100' rounded={10}/>
       <Button title="Salvar" ml={4} w={160} bg='blue.200' rounded={10}/>
     </HStack>
