@@ -9,7 +9,7 @@ export function ButtonNew() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   function HandleNavigateGoBack() {
-    navigation.navigate("criareditarDPS");
+    navigation.navigate("tipoEquipamento");
   }
 
   return (
