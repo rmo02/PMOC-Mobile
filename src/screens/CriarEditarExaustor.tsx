@@ -1,5 +1,6 @@
 import { Header } from "@components/Header";
 import {
+  Center,
   HStack,
   Heading,
   ScrollView,
@@ -11,14 +12,20 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { EditArForm } from "@components/EditArForm";
 import { EditExaustorForm } from "@components/EditExaustorForm";
+import { useState } from "react";
 
 export function CriarEditarExaustor() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [exaustor, setExaustor] = useState<any[]>([{}]);
 
-    function HandleNavigateGoBack () {
-        navigation.navigate('estacaoDetails')
+    function HandleNavigateGoBack() {
+      if(exaustor != undefined) {
+      navigation.navigate("tipoEquipamento");
+      } else {
+        navigation.navigate("estacaoDetails");
+      }
+      
     }
 
 
@@ -36,27 +43,48 @@ export function CriarEditarExaustor() {
           },
         }}
       >
-        <HStack alignItems="center">
-          <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-            <HStack alignItems="center" pt={5} ml={2}>
-              <MaterialIcons name="arrow-back-ios" size={20} color="white" />
-              <Text color="white" fontFamily="regular" fontSize="md">
-                Cancelar
-              </Text>
-            </HStack>
-          </TouchableOpacity>
-          <Heading ml="15%" pt={5} color="white" fontFamily="bold">
-            EXAUSTOR001
-          </Heading>
-        </HStack>
-      </VStack>
+          <HStack alignItems="center" w="full">
+            <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
+              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
+                <MaterialIcons name="arrow-back-ios" size={20} color="white" />
+                <Text color="white" fontFamily="regular" fontSize="md">
+                  Cancelar
+                </Text>
+              </HStack>
+            </TouchableOpacity>
+            <Center flex={0.7}>
+              <Heading pt={5} color="white" fontFamily="bold">
+                {exaustor === undefined ? "EXAU001" : "Novo Receptor"}
+              </Heading>
+            </Center>
+          </HStack>
+        </VStack>
 
       <EditExaustorForm />
 
-      <HStack marginX={5} justifyContent="center" zIndex={1} mt='520' marginBottom={10}>
-      <Button title="Excluir" w={160} bg='black.100' rounded={10}/>
-      <Button title="Salvar" ml={4} w={160} bg='blue.200' rounded={10}/>
-    </HStack>
+      {exaustor === undefined ? (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="520"
+            marginBottom={10}
+          >
+            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
+            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
+          </HStack>
+        ) : (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="520"
+            marginBottom={10}
+          >
+            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
+          </HStack>
+        )}
+
         </ScrollView>
 
 

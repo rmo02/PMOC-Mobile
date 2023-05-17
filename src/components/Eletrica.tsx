@@ -9,7 +9,7 @@ export function Eletrica () {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
 
     function HandleNavigateEditareletrica () {
-      navigation.navigate('editarEletrica')
+    //   navigation.navigate('')
     }
 
     return (
@@ -17,7 +17,7 @@ export function Eletrica () {
             <Text color='gray.300'>Elétrica</Text>
             <VStack bg='white' mt={2} borderRadius={10} py={2} px={5}>
 
-                <TouchableOpacity onPress={() => HandleNavigateEditareletrica()}>
+                <TouchableOpacity onPress={() => console.log('clicou')}>
                     <HStack alignItems='center'>
                         <Box bg='blue.600' borderRadius={50} alignItems='center' justifyContent='center' h={30} w={30}>
                             <Ionicons name="ios-pin" size={24} color="white" />

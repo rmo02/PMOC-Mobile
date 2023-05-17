@@ -1,18 +1,25 @@
 import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { EditAntenaForm } from "@components/EditAntenaForm";
+import { useState } from "react";
 
 
 export function CriarEditarAntena() {
-    const navigation = useNavigation<AppNavigatorRoutesProps>();
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+  const [ antena, setAntena ] = useState<any[]>([{}]);
 
-    function HandleNavigateGoBack () {
-        navigation.navigate('estacaoDetails')
-      }
+  function HandleNavigateGoBack() {
+    if(antena != undefined) {
+    navigation.navigate("tipoEquipamento");
+    } else {
+      navigation.navigate("estacaoDetails");
+    }
+    
+  }
       
   return (
     <VStack flex={1} bg="fundo" position='relative'>
@@ -28,27 +35,47 @@ export function CriarEditarAntena() {
           },
         }}
       >
-        <HStack alignItems="center">
-          <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-            <HStack alignItems="center" pt={5} ml={2}>
-              <MaterialIcons name="arrow-back-ios" size={20} color="white" />
-              <Text color="white" fontFamily="regular" fontSize="md">
-                Cancelar
-              </Text>
-            </HStack>
-          </TouchableOpacity>
-          <Heading ml="15%" pt={5} color="white" fontFamily="bold">
-            Antena 001
-          </Heading>
-        </HStack>
-      </VStack>
+          <HStack alignItems="center" w="full">
+            <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
+              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
+                <MaterialIcons name="arrow-back-ios" size={20} color="white" />
+                <Text color="white" fontFamily="regular" fontSize="md">
+                  Cancelar
+                </Text>
+              </HStack>
+            </TouchableOpacity>
+            <Center flex={0.7}>
+              <Heading pt={5} color="white" fontFamily="bold">
+                {antena === undefined ? "ANT001" : "Nova Antena"}
+              </Heading>
+            </Center>
+          </HStack>
+        </VStack>
 
       <EditAntenaForm />
 
-      <HStack marginX={5} justifyContent="center" zIndex={1} mt='1015' marginBottom={10}>
-      <Button title="Excluir" w={160} bg='black.100' rounded={10}/>
-      <Button title="Salvar" ml={4} w={160} bg='blue.200' rounded={10}/>
-    </HStack>
+      {antena === undefined ? (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="1020"
+            marginBottom={10}
+          >
+            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
+            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
+          </HStack>
+        ) : (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="1020"
+            marginBottom={10}
+          >
+            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
+          </HStack>
+        )}
         </ScrollView>
 
 

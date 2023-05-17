@@ -1,18 +1,25 @@
 import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { EditCombinadorForm } from "@components/EditCombinadorForm";
+import { useState } from "react";
 
 
 export function CriarEditarCombinador() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [ combinador, setCombinador ] = useState<any[]>([{}]);
 
-    function HandleNavigateGoBack () {
-        navigation.navigate('estacaoDetails')
-      }
+  function HandleNavigateGoBack() {
+    if(combinador != undefined) {
+    navigation.navigate("tipoEquipamento");
+    } else {
+      navigation.navigate("estacaoDetails");
+    }
+    
+  }
       
   return (
     <VStack flex={1} bg="fundo" position='relative'>
@@ -28,27 +35,48 @@ export function CriarEditarCombinador() {
           },
         }}
       >
-        <HStack alignItems="center">
-          <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-            <HStack alignItems="center" pt={5} ml={2}>
-              <MaterialIcons name="arrow-back-ios" size={20} color="white" />
-              <Text color="white" fontFamily="regular" fontSize="md">
-                Cancelar
-              </Text>
-            </HStack>
-          </TouchableOpacity>
-          <Heading ml="11%" pt={5} color="white" fontFamily="bold">
-            Combinador
-          </Heading>
-        </HStack>
-      </VStack>
+          <HStack alignItems="center" w="full">
+            <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
+              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
+                <MaterialIcons name="arrow-back-ios" size={20} color="white" />
+                <Text color="white" fontFamily="regular" fontSize="md">
+                  Cancelar
+                </Text>
+              </HStack>
+            </TouchableOpacity>
+            <Center flex={0.7}>
+              <Heading pt={5} color="white" fontFamily="bold">
+                {combinador === undefined ? "COM001" : "Novo combinador"}
+              </Heading>
+            </Center>
+          </HStack>
+        </VStack>
+
 
       <EditCombinadorForm />
 
-      <HStack marginX={5} justifyContent="center" zIndex={1} mt='520' marginBottom={10}>
-      <Button title="Excluir" w={160} bg='black.100' rounded={10}/>
-      <Button title="Salvar" ml={4} w={160} bg='blue.200' rounded={10}/>
-    </HStack>
+      {combinador === undefined ? (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="520"
+            marginBottom={10}
+          >
+            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
+            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
+          </HStack>
+        ) : (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="520"
+            marginBottom={10}
+          >
+            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
+          </HStack>
+        )}
         </ScrollView>
 
 

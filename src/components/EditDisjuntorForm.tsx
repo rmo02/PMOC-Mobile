@@ -1,11 +1,13 @@
-import { Center, HStack, Heading, Icon, Input, Pressable, Text, VStack } from "native-base";
+import { Box, Center, CheckIcon, HStack, Heading, Icon, Input, Pressable, Select, Text, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 
 
 
 export function EditDisjuntorForm () {
-    return (
-        
+  const [service, setService] = useState("");
+
+    return ( 
       <VStack
       zIndex={1}
       w="90%"
@@ -26,7 +28,7 @@ export function EditDisjuntorForm () {
       <VStack>
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Tag
+            Código
           </Text>
           <Input
             isRequired
@@ -47,6 +49,31 @@ export function EditDisjuntorForm () {
               </Pressable>
             }
           />
+        </VStack>
+
+        <VStack mt={5}>
+          <Text color="blue.600" fontFamily="regular" fontSize="md">
+            Status
+          </Text>
+          <Box maxW="full" >
+            <Select
+              selectedValue={service}
+              minWidth="200"
+              accessibilityLabel="Choose Service"
+              placeholder="Status"
+              _selectedItem={{
+                bg: "gray.50",
+                endIcon: <CheckIcon size="5" />,
+              }}
+              mt={1}
+              h={12}
+              onValueChange={(itemValue) => setService(itemValue)}
+            >
+              <Select.Item label="Parado" value="stop" />
+              <Select.Item label="Manutenção" value="main" />
+              <Select.Item label="Funcionando" value="play" />
+            </Select>
+          </Box>
         </VStack>
 
         <VStack mt={5}>
@@ -150,29 +177,6 @@ export function EditDisjuntorForm () {
           />
         </VStack>
 
-        <VStack mt={5}>
-          <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Criado por
-          </Text>
-          <Input
-            mt={2}
-            bg="gray.50"
-            borderWidth={0}
-            h={12}
-            placeholder="220"
-            maxW="100%"
-            InputRightElement={
-              <Pressable>
-                <Icon
-                  as={<Ionicons name="md-close-circle" />}
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                />
-              </Pressable>
-            }
-          />
-        </VStack>
 
       </VStack>
 

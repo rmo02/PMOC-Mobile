@@ -1,17 +1,24 @@
 import { Header } from "@components/Header";
-import { HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { EditDPSForm } from "@components/EditDPSForm";
+import { useState } from "react";
 
 export function CriarEditarDPS() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
+  const [dps, setDps] = useState<any>([{}]);
 
   function HandleNavigateGoBack() {
-    navigation.navigate("estacaoDetails");
+    if(dps != undefined) {
+    navigation.navigate("tipoEquipamento");
+    } else {
+      navigation.navigate("estacaoDetails");
+    }
+    
   }
 
   return (
@@ -28,33 +35,47 @@ export function CriarEditarDPS() {
             },
           }}
         >
-          <HStack alignItems="center">
+          <HStack alignItems="center" w="full">
             <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-              <HStack alignItems="center" pt={5} ml={2}>
+              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
                 <MaterialIcons name="arrow-back-ios" size={20} color="white" />
                 <Text color="white" fontFamily="regular" fontSize="md">
                   Cancelar
                 </Text>
               </HStack>
             </TouchableOpacity>
-            <Heading ml="15%" pt={5} color="white" fontFamily="bold">
-              DPS 001
-            </Heading>
+            <Center flex={0.7}>
+              <Heading pt={5} color="white" fontFamily="bold">
+                {dps === undefined ? "DPS001" : "Novo Receptor"}
+              </Heading>
+            </Center>
           </HStack>
         </VStack>
 
         <EditDPSForm />
 
-        <HStack
-          marginX={5}
-          justifyContent="center"
-          zIndex={1}
-          mt="730"
-          marginBottom={10}
-        >
-          <Button title="Excluir" w={160} bg="black.100" rounded={10} />
-          <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
-        </HStack>
+        {dps === undefined ? (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="720"
+            marginBottom={10}
+          >
+            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
+            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
+          </HStack>
+        ) : (
+          <HStack
+            marginX={5}
+            justifyContent="center"
+            zIndex={1}
+            mt="720"
+            marginBottom={10}
+          >
+            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
+          </HStack>
+        )}
       </ScrollView>
     </VStack>
   );

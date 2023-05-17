@@ -1,12 +1,24 @@
-import { Center, HStack, Heading, Icon, Input, Pressable, Text, VStack } from "native-base";
+import {
+  Box,
+  Center,
+  CheckIcon,
+  HStack,
+  Heading,
+  Icon,
+  Input,
+  Pressable,
+  Select,
+  Text,
+  VStack,
+} from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 
+export function EditTelemetriaForm() {
+  const [service, setService] = useState("");
 
-
-export function EditTelemetriaForm () {
-    return (
-        
-      <VStack
+  return (
+    <VStack
       zIndex={1}
       w="90%"
       position="absolute"
@@ -24,10 +36,9 @@ export function EditTelemetriaForm () {
       </Center>
 
       <VStack>
-
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
-            Tag
+            Código
           </Text>
           <Input
             isRequired
@@ -48,6 +59,31 @@ export function EditTelemetriaForm () {
               </Pressable>
             }
           />
+        </VStack>
+
+        <VStack mt={5}>
+          <Text color="blue.600" fontFamily="regular" fontSize="md">
+            Status
+          </Text>
+          <Box maxW="full">
+            <Select
+              selectedValue={service}
+              minWidth="200"
+              accessibilityLabel="Choose Service"
+              placeholder="Status"
+              _selectedItem={{
+                bg: "gray.50",
+                endIcon: <CheckIcon size="5" />,
+              }}
+              h={12}
+              mt={1}
+              onValueChange={(itemValue) => setService(itemValue)}
+            >
+              <Select.Item label="Parado" value="stop" />
+              <Select.Item label="Manutenção" value="main" />
+              <Select.Item label="Funcionando" value="play" />
+            </Select>
+          </Box>
         </VStack>
 
         <VStack mt={5}>
@@ -100,7 +136,6 @@ export function EditTelemetriaForm () {
           />
         </VStack>
 
-
         <VStack mt={5}>
           <Text color="blue.600" fontFamily="regular" fontSize="md">
             Categoria Equipamento
@@ -149,11 +184,7 @@ export function EditTelemetriaForm () {
             }
           />
         </VStack>
-
       </VStack>
-
     </VStack>
-
-    
-    );
+  );
 }
