@@ -23,20 +23,20 @@ export function CriarEditarExaustor() {
 
   const onSubmit = async (data: FormData) => {
     console.log('página do exaustor',data);
-    try {
-      const res = await api.post('/exaustores',{
-        "codigo": data.codigo,
-        "status": "funcionando",
-        "marca": data.marca,
-        "modelo": data.modelo,
-        "category": "refrigeracao"
-      }, {
-        headers: { "Content-Type": "application/json" }
-      });
-      console.log(res);
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   const res = await api.post('/exaustores',{
+    //     "codigo": data.codigo,
+    //     "status": "funcionando",
+    //     "marca": data.marca,
+    //     "modelo": data.modelo,
+    //     "category": "refrigeracao"
+    //   }, {
+    //     headers: { "Content-Type": "application/json" }
+    //   });
+    //   console.log(res);
+    // } catch (error) {
+    //   console.log(error)
+    // }
   };
 
   return (
