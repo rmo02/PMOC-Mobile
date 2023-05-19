@@ -10,7 +10,7 @@ export function TipoEquipamento() {
     <VStack bg="fundo" flex={1}>
       <VStack
         pt={16}
-        h="22.1%"
+        h="22%"
         px={5}
         bg={{
           linearGradient: {

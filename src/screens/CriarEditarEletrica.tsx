@@ -11,6 +11,7 @@ export function CriarEditarEletrica() {
   const [nobreak, setNobreak] = useState<any>([{}]);
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
+
   function HandleNavigateGoBack() {
     if(nobreak != undefined) {
     navigation.navigate("tipoEquipamento");

@@ -11,7 +11,8 @@ export function Header({ title, subtitle }: Props) {
   return (
     <VStack
       pt={16}
-      pb={subtitle === "" ? 20 : 5}
+      h="22%"
+      // pb={subtitle === "" ? 20 : 5}
       px={8}
       bg={{
         linearGradient: {
