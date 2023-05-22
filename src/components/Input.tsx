@@ -2,10 +2,7 @@ import {
     Input as NativeBaseInput,
     IInputProps,
     FormControl,
-    Pressable,
-    IconButton,
   } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
   
 
   type Props = IInputProps & {

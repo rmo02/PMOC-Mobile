@@ -1,10 +1,8 @@
-import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditAntenaForm } from "@components/EditAntenaForm";
 import { EditTransmissorForm } from "@components/EditTransmissorForm";
 import { useState } from "react";
 
@@ -20,9 +18,37 @@ export function CriarEditarTransmissor() {
     }
   }
 
+  const onSubmit = async (data: any) => {
+    const dados = {
+      "codigo": data.codigo,
+      "status": data.status,
+      "marca": data.marca,
+      "modelo": data.modelo,
+      "programmed_power": data.programmed_power,
+      "canal_fisico": data.canal_fisico,
+      "canal_virtual": data.canal_virtual,
+      "receptor": data.receptor,
+      "antena": data.antena,
+      "category": "Irradiação",
+    };
+    console.log(dados);
+    // Faça a requisição POST usando a biblioteca de sua escolha
+    // try {
+    //   const res = await api.post('/exaustores',dados
+    //   );
+    //   console.log(res.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
   return (
-    <VStack flex={1} bg="fundo" position="relative">
-      <ScrollView>
+    <ScrollView
+      bg="fundo"
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
+      <VStack flex={1} bg="fundo" position="relative" h={1500}>
         <VStack
           pt={8}
           pb={20}
@@ -36,7 +62,7 @@ export function CriarEditarTransmissor() {
         >
           <HStack alignItems="center" w="full">
             <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
+              <HStack alignItems="center" pt={5} ml={2}>
                 <MaterialIcons name="arrow-back-ios" size={20} color="white" />
                 <Text color="white" fontFamily="regular" fontSize="md">
                   Cancelar
@@ -45,37 +71,13 @@ export function CriarEditarTransmissor() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {transmissor === undefined ? "NBR001" : "Novo Receptor"}
+                {transmissor != undefined ? "Novo Transmissor" : "TRANS001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-
-        <EditTransmissorForm />
-
-        {transmissor === undefined ? (
-          <HStack
-            marginX={5}
-            justifyContent="center"
-            zIndex={1}
-            mt="1020"
-            marginBottom={10}
-          >
-            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
-            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
-          </HStack>
-        ) : (
-          <HStack
-            marginX={5}
-            justifyContent="center"
-            zIndex={1}
-            mt="1020"
-            marginBottom={10}
-          >
-            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
-          </HStack>
-        )}
-      </ScrollView>
-    </VStack>
+        <EditTransmissorForm onSubmit={onSubmit} />
+      </VStack>
+    </ScrollView>
   );
 }

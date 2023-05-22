@@ -6,7 +6,6 @@ import {
   Heading,
   Icon,
   Pressable,
-  Select,
   Text,
   VStack,
 } from "native-base";
@@ -15,17 +14,16 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import { StatusDropDown } from "./StatusDropDown";
 
 type FormData = {
   codigo: string;
   marca: string;
   status: string;
   modelo: string;
-  category: string;
 };
 
 export function EditExaustorForm({ onSubmit } :any) {
-  const [service, setService] = useState("");
   const [dataExaustor, setDataExaultor] = useState([]);
 
   const {
@@ -81,23 +79,19 @@ export function EditExaustorForm({ onSubmit } :any) {
             </Text>
 
             <Box maxW="full">
-              <Select
-                selectedValue={service}
-                minWidth="200"
-                accessibilityLabel="Choose Service"
-                placeholder="Status"
-                _selectedItem={{
-                  bg: "gray.50",
-                  endIcon: <CheckIcon size="5" />,
-                }}
-                h={12}
-                mt={1}
-                onValueChange={(itemValue) => setService(itemValue)}
-              >
-                <Select.Item label="Parado" value="stop" />
-                <Select.Item label="Manutenção" value="munutencao" />
-                <Select.Item label="Funcionando" value="funcionando" />
-              </Select>
+              <Controller 
+              control={control}
+              name="status"
+              rules={{ required: "Informe o status"}}
+              render={({field: {onChange, value}}) => (
+                <StatusDropDown
+                errorMessage={errors.status?.message}
+                selectedValue={value}
+                onValueChange={onChange} 
+                />
+              )}
+              />
+
             </Box>
           </VStack>
 

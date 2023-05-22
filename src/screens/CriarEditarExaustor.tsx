@@ -11,7 +11,7 @@ import api from "@api/api";
 
 export function CriarEditarExaustor() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [exaustor, setExaustor] = useState<any[]>([{}]);
+  const [exaustor, setExaustor] = useState<any[]>([]);
 
   function HandleNavigateGoBack() {
     if (exaustor != undefined) {
@@ -21,23 +21,41 @@ export function CriarEditarExaustor() {
     }
   }
 
-  const onSubmit = async (data: FormData) => {
-    console.log('página do exaustor',data);
+  const getExaustores = async () => {
     // try {
-    //   const res = await api.post('/exaustores',{
-    //     "codigo": data.codigo,
-    //     "status": "funcionando",
-    //     "marca": data.marca,
-    //     "modelo": data.modelo,
-    //     "category": "refrigeracao"
-    //   }, {
-    //     headers: { "Content-Type": "application/json" }
+    //   const res = await api.get('/exaustores', {
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     }
     //   });
-    //   console.log(res);
+    //   setExaustor(res.data);
     // } catch (error) {
-    //   console.log(error)
+    //   console.log(error);
     // }
   };
+
+  const onSubmit = async (data: any) => {
+    const dados = {
+      codigo: data.codigo,
+      status: data.status,
+      marca: data.marca,
+      modelo: data.modelo,
+      category: "Refrigeração",
+    };
+    console.log(dados);
+    // Faça a requisição POST usando a biblioteca de sua escolha
+    // try {
+    //   const res = await api.post('/exaustores',dados
+    //   );
+    //   console.log(res.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+
+  // useEffect(() => {
+  //   getExaustores()
+  // }, [])
 
   return (
     <ScrollView
@@ -68,7 +86,7 @@ export function CriarEditarExaustor() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {exaustor === undefined ? "EXAU001" : "Novo Receptor"}
+                {exaustor != undefined ? "Novo Exaustor" : "EXAU001"}
               </Heading>
             </Center>
           </HStack>
