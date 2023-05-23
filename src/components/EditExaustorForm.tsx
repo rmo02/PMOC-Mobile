@@ -87,7 +87,12 @@ export function EditExaustorForm({ onSubmit } :any) {
                 <StatusDropDown
                 errorMessage={errors.status?.message}
                 selectedValue={value}
-                onValueChange={onChange} 
+                onValueChange={onChange}
+                options={[
+                  { label: "Funcionando", value: "FUNCIONANDO" },
+                  { label: "Parado", value: "PARADO" },
+                  { label: "Em espera", value: "STAND_BY" },
+                ]} 
                 />
               )}
               />

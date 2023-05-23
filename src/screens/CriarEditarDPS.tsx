@@ -6,24 +6,88 @@ import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { EditDPSForm } from "@components/EditDPSForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "@api/api";
 
 export function CriarEditarDPS() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [dps, setDps] = useState<any>([{}]);
+  const [dps, setDps] = useState<any[]>([]);
 
   function HandleNavigateGoBack() {
-    if(dps != undefined) {
-    navigation.navigate("tipoEquipamento");
+    if (dps != undefined) {
+      navigation.navigate("tipoEquipamento");
     } else {
       navigation.navigate("estacaoDetails");
     }
-    
   }
 
+  useEffect(() => {
+    getDPS();
+  }, []);
+
+  async function getDPS() {
+    try {
+      const res = await api.get("/DPS");
+      setDps(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onSubmit = async (data: any) => {
+    const dados = {
+      codigo: data.codigo,
+      marca: data.marca,
+      status: data.status,
+      modelo: data.modelo,
+      corrente_maxima: data.corrente_maxima,
+      classe: data.classe,
+      category: "Eletrica",
+    };
+    console.log(dados);
+    //Faça a requisição POST usando a biblioteca de sua escolha
+    try {
+      const res = await api.post("/DPS", dados);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onSubmitUpdate = async (data: any) => {
+    const dados = {
+      codigo: data.codigo,
+      marca: data.marca,
+      status: data.status,
+      modelo: data.modelo,
+      corrente_maxima: data.corrente_maxima,
+      classe: data.classe,
+      category: "Eletrica",
+    };
+    try {
+      const res = await api.put("/DPS/1", dados);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onDelete = async (data: any) => {
+    try {
+      const res = await api.delete("/DPS/1");
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <VStack flex={1} bg="fundo" position="relative">
-      <ScrollView>
+    <ScrollView
+      bg="fundo"
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
+      <VStack flex={1} bg="fundo" position="relative" h={1000}>
         <VStack
           pt={8}
           pb={20}
@@ -37,7 +101,7 @@ export function CriarEditarDPS() {
         >
           <HStack alignItems="center" w="full">
             <TouchableOpacity onPress={() => HandleNavigateGoBack()}>
-              <HStack alignItems="center" pt={5} ml={2} flex={0.1}>
+              <HStack alignItems="center" pt={5} ml={2}>
                 <MaterialIcons name="arrow-back-ios" size={20} color="white" />
                 <Text color="white" fontFamily="regular" fontSize="md">
                   Cancelar
@@ -46,37 +110,18 @@ export function CriarEditarDPS() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {dps === undefined ? "DPS001" : "Novo Receptor"}
+                {dps === undefined ? "Novo DPS" : dps[0]?.codigo}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-
-        <EditDPSForm />
-
-        {dps === undefined ? (
-          <HStack
-            marginX={5}
-            justifyContent="center"
-            zIndex={1}
-            mt="720"
-            marginBottom={10}
-          >
-            <Button title="Excluir" w={160} bg="black.100" rounded={10} />
-            <Button title="Salvar" ml={4} w={160} bg="blue.200" rounded={10} />
-          </HStack>
-        ) : (
-          <HStack
-            marginX={5}
-            justifyContent="center"
-            zIndex={1}
-            mt="720"
-            marginBottom={10}
-          >
-            <Button title="Salvar" w="full" bg="blue.200" rounded={10} />
-          </HStack>
-        )}
-      </ScrollView>
-    </VStack>
+        <EditDPSForm
+          onSubmit={onSubmit}
+          onSubmitUpdate={onSubmitUpdate}
+          onDelete={onDelete}
+          DPS={dps}
+        />
+      </VStack>
+    </ScrollView>
   );
 }

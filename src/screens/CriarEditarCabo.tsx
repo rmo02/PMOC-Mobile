@@ -48,7 +48,7 @@ export function CriarEditarCabo() {
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={900}>
+      <VStack flex={1} bg="fundo" position="relative" h={1000}>
         <VStack
           pt={8}
           pb={20}

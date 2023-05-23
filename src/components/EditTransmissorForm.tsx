@@ -95,6 +95,11 @@ export function EditTransmissorForm({ onSubmit }: any) {
                     errorMessage={errors.status?.message}
                     selectedValue={value}
                     onValueChange={onChange}
+                    options={[
+                      { label: "Funcionando", value: "FUNCIONANDO" },
+                      { label: "Parado", value: "PARADO" },
+                      { label: "Em espera", value: "STAND_BY" },
+                    ]}
                   />
                 )}
               />

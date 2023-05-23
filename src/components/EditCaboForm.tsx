@@ -92,6 +92,11 @@ export function EditCaboForm({ onSubmit }: any) {
                     errorMessage={errors.status?.message}
                     selectedValue={value}
                     onValueChange={onChange}
+                    options={[
+                      { label: "Funcionando", value: "FUNCIONANDO" },
+                      { label: "Parado", value: "PARADO" },
+                      { label: "Em espera", value: "STAND_BY" },
+                    ]}
                   />
                 )}
               />
@@ -142,6 +147,63 @@ export function EditCaboForm({ onSubmit }: any) {
                   onChangeText={onChange}
                   value={value}
                   placeholder="Modelo X"
+                  InputRightElement={
+                    <Pressable onPress={() => onChange("")}>
+                      <Icon
+                        as={<Ionicons name="md-close-circle" />}
+                        size={5}
+                        mr="2"
+                        color="muted.400"
+                      />
+                    </Pressable>
+                  }
+                />
+              )}
+            />
+          </VStack>
+
+          <VStack mt={5}>
+            <Text color="blue.600" fontFamily="regular" fontSize="md">
+              Tipo
+            </Text>
+
+            <Box maxW="full">
+              <Controller
+                control={control}
+                name="tipo"
+                rules={{ required: "Informe o tipo do cabo" }}
+                render={({ field: { onChange, value } }) => (
+                  <StatusDropDown
+                    errorMessage={errors.tipo?.message}
+                    selectedValue={value}
+                    onValueChange={onChange}
+                    placeholder="tipo do cabo"
+                    options={[
+                      { label: "7/8", value: "C_7_8" },
+                      { label: "1 5/8", value: "C_15_8" },
+                      { label: "3 1/8", value: "C_31_8" },
+                    ]}
+                  />
+                )}
+              />
+            </Box>
+          </VStack>
+
+          <VStack mt={5}>
+            <Text color="blue.600" fontFamily="regular" fontSize="md">
+              Tamanho
+            </Text>
+
+            <Controller
+              control={control}
+              name="tamanho"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  errorMessage={errors.tamanho?.message}
+                  onChangeText={onChange}
+                  value={value}
+                  keyboardType="number-pad"
+                  placeholder="20"
                   InputRightElement={
                     <Pressable onPress={() => onChange("")}>
                       <Icon

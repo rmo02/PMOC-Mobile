@@ -40,7 +40,7 @@ export function EditCombinadorForm({ onSubmit }: any) {
       <VStack p={5} px={5} bg="white" marginX={5} borderRadius={10}>
         <Center>
           <Heading color="blue.600" fontFamily="bold" fontSize="xl">
-            Transmissor
+            Combinador
           </Heading>
         </Center>
 
@@ -90,6 +90,11 @@ export function EditCombinadorForm({ onSubmit }: any) {
                     errorMessage={errors.status?.message}
                     selectedValue={value}
                     onValueChange={onChange}
+                    options={[
+                      { label: "Funcionando", value: "FUNCIONANDO" },
+                      { label: "Parado", value: "PARADO" },
+                      { label: "Em espera", value: "STAND_BY" },
+                    ]}
                   />
                 )}
               />

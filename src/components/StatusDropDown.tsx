@@ -46,7 +46,7 @@ export function StatusDropDown({
       >
         {options.map((option, i) => (
           <NativeBaseSelect.Item
-            key={i}
+            key={option.value}
             label={option.label}
             value={option.value}
           />
