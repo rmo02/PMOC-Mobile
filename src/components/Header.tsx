@@ -1,13 +1,20 @@
 import { Box, Center, HStack, Heading, Text, VStack } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 type Props = {
   title?: string;
   subtitle?: string;
- 
 };
 
 export function Header({ title, subtitle }: Props) {
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  function HandleGoBack() {
+    navigation.navigate("estacao");
+  }
+
   return (
     <VStack
       pt={16}
@@ -25,10 +32,14 @@ export function Header({ title, subtitle }: Props) {
       {subtitle === "" ? (
         <HStack justifyContent="space-between">
           <HStack alignItems="center">
-            <MaterialIcons name="arrow-back-ios" size={20} color="white" />
-            <Text color="white" fontFamily="regular" fontSize="md">
-              {title}
-            </Text>
+            <TouchableOpacity onPress={() => HandleGoBack()}>
+              <HStack alignItems="center">
+                <MaterialIcons name="arrow-back-ios" size={20} color="white" />
+                <Text color="white" fontFamily="regular" fontSize="md">
+                  {title}
+                </Text>
+              </HStack>
+            </TouchableOpacity>
           </HStack>
           <Text color="white" fontFamily="regular" fontSize="md">
             Editar

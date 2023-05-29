@@ -2,7 +2,6 @@ import { Header } from "@components/Header";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { EditDPSForm } from "@components/EditDPSForm";
