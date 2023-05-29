@@ -1,4 +1,4 @@
-import { Box, HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { Box, FlatList, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
@@ -12,16 +12,19 @@ import api from "@api/api";
 export function EstacaoDetails({route}: any) {
   let id = route?.params.id;
   const [estacaoDetails, setEstacaoDetails] = useState<[]>()
+  const [estacaoInfo, setEstacaoInfo] = useState<[]>()
   const [telaAtual, setTelaAtual] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const swiperRef = useRef<Swiper | null>(null);
 
-  
+  console.log(id)
 
   const getEstacaoDetails = async() => {
     try {
         const res = await api.get(`/estacoes/${id}`);
         setEstacaoDetails(res.data["manutencao"]);
+        setEstacaoInfo(res.data);
+        console.log(res.data)
     } catch (error) {
         console.log('Estacao', error)
     }
@@ -92,9 +95,22 @@ useEffect(() => {
         scrollEnabled
         scrollEventThrottle={16}
       >
-        <ScrollView mt={120} scrollEventThrottle={16}>
-          <CardManutencao data={estacaoDetails}/>
-        </ScrollView>
+
+        <FlatList 
+        data={estacaoDetails}
+        keyExtractor={(item) => item.id}
+        renderItem={({item}) => (
+          <CardManutencao data={item}/>
+      )}
+      showsVerticalScrollIndicator={false}
+      _contentContainerStyle={{marginTop: 120, paddingBottom:130}}
+      ListEmptyComponent={() => (
+          <VStack flex={1} justifyContent='center' alignItems='center' mt='50%'>
+              <Text fontFamily='bold' fontSize={20} color='gray.300'>Não há manutenções cadastradas</Text>
+          </VStack>
+      )}
+        />
+
 
         <ScrollView mt={120} scrollEventThrottle={16}>
           <Equipamentos />

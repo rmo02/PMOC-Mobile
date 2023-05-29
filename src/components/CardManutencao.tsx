@@ -1,54 +1,37 @@
 import { HStack, Text, VStack } from "native-base";
 import { Button } from "./Button";
 
-export function CardManutencao() {
+type Props = {
+  data:any
+}
+
+export function CardManutencao({data}: Props) {
+
   return (
     <VStack>
       <VStack p={5} px={5} bg="white" marginX={5} mt={2} borderRadius={10}>
         <Text color="blue.600" fontFamily="regular" fontSize="md">
-          Manutenção Preventiva Cururupu
+          {data.tipo}
         </Text>
         <HStack mt={3} justifyContent="space-between">
           <Text color="blue.200" fontFamily="regular">
-            Ramon Maia
+            {data.tec}
           </Text>
           <Text color="blue.200" fontFamily="regular">
-            TV Mirante
+            {data.empresa}
           </Text>
           <Text fontWeight="bold" fontFamily="regular">
-            25/04/2023
+            {data.data}
           </Text>
         </HStack>
 
         <Text mt={2} color="gray.450">
-          Rua teste. 220 - Bairro teste - Cururupu, MA - 37560-252
+          {data.local}
         </Text>
 
-        <Button title="Em Execução" />
+        <Button title={data.status} />
       </VStack>
 
-      <VStack p={5} px={5} bg="white" marginX={5} mt={2} borderRadius={10}>
-        <Text color="blue.600" fontFamily="regular" fontSize="md">
-          Manutenção Preventiva Cururupu
-        </Text>
-        <HStack mt={3} justifyContent="space-between">
-          <Text color="blue.200" fontFamily="regular">
-            Ramon Maia
-          </Text>
-          <Text color="blue.200" fontFamily="regular">
-            TV Mirante
-          </Text>
-          <Text fontWeight="bold" fontFamily="regular">
-            25/04/2023
-          </Text>
-        </HStack>
-
-        <Text mt={2} color="gray.450">
-          Rua teste. 220 - Bairro teste - Cururupu, MA - 37560-252
-        </Text>
-
-        <Button title="Agendada" />
-      </VStack>
     </VStack>
   );
 }

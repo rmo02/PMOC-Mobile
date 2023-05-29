@@ -44,7 +44,7 @@ type AppRoutes = {
   estacao: undefined;
   perfil: undefined;
   tipoEquipamento: undefined;
-  estacaoDetails: undefined;
+  estacaoDetails: {id:string} ;
   criareditarEletrica: undefined;
   criareditarAntena: undefined;
   criareditarAr: undefined;
