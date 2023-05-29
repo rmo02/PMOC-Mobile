@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 
 export function Estacao () {
-    const [estacoes, setEstacoes] = useState<[]>();
+    const [estacoes, setEstacoes] = useState<any[]>();
 
 
     const getEstacoes = async() => {

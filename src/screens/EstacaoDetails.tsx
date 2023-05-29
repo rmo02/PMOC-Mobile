@@ -11,8 +11,8 @@ import api from "@api/api";
 
 export function EstacaoDetails({route}: any) {
   let id = route?.params.id;
-  const [estacaoDetails, setEstacaoDetails] = useState<[]>()
-  const [estacaoInfo, setEstacaoInfo] = useState<[]>()
+  const [estacaoDetails, setEstacaoDetails] = useState<any[]>()
+  const [estacaoInfo, setEstacaoInfo] = useState<any[]>()
   const [telaAtual, setTelaAtual] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const swiperRef = useRef<Swiper | null>(null);
