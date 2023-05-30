@@ -1,29 +1,22 @@
 import { HStack, Text, VStack } from "native-base";
+import { AlphabetFilter } from "./AlphabetFilter";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-export function Documentos() {
+type Props = TouchableOpacityProps & {
+  data: any;
+};
+
+export function Documentos({ data, ...rest }: Props) {
   return (
-    <VStack px={5} mt={2}>
-    <VStack bg='white' mt={2} borderRadius={10} py={2} px={5}>
-        <VStack>
-            <HStack alignItems='center'>
-                <VStack px={5} >
-                    <Text fontFamily='bold' fontSize='md'>NF-e</Text>
-                    <Text fontSize='xs' color='gray.300'>Ar Premium</Text>
-                </VStack>
-            </HStack>
-            <VStack borderTopWidth={0.5} mt={1}></VStack>
+    <HStack px={5}>
+        <VStack bg='white' w='full'>
+            <VStack px={5} py={1}>
+            <Text fontFamily='bold' fontSize='md'>{data.nome}</Text>
+            <Text fontSize='xs' color='gray.300'>{data.descricao}</Text>
+            <VStack borderTopWidth={0.5} mt={1}/>
+            </VStack>
         </VStack>
-
-        <VStack mt={2}>
-            <HStack alignItems='center'>
-                <VStack px={5} >
-                    <Text fontFamily='bold' fontSize='md'>NF-e</Text>
-                    <Text fontSize='xs' color='gray.300'>Ar Premium</Text>
-                </VStack>
-            </HStack>
-            <VStack borderTopWidth={0.5} mt={1}></VStack>
-        </VStack>
-    </VStack>
-  </VStack>
+    </HStack>
   );
 }

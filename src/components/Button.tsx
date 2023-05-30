@@ -11,7 +11,7 @@ export function Button ({title, ...rest} : Props) {
         <ButtonNaviteBase
         marginTop={5}
         w='full'
-        h={12}
+        h={10}
         bg={title === 'Agendada' ? 'blue.200' : 'green.400' }
        rounded={20}
         alignItems='center'

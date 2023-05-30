@@ -1,4 +1,12 @@
-import { Box, FlatList, HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import {
+  Box,
+  FlatList,
+  HStack,
+  Heading,
+  ScrollView,
+  Text,
+  VStack,
+} from "native-base";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
@@ -8,32 +16,34 @@ import { Documentos } from "@components/Documentos";
 import { Equipamentos } from "@components/Equipamentos";
 import { Header } from "@components/Header";
 import api from "@api/api";
+import { AlphabetFilter } from "@components/AlphabetFilter";
 
-export function EstacaoDetails({route}: any) {
+export function EstacaoDetails({ route }: any) {
   let id = route?.params.id;
-  const [estacaoDetails, setEstacaoDetails] = useState<any[]>()
-  const [estacaoInfo, setEstacaoInfo] = useState<any[]>()
+  const [estacaoDetails, setEstacaoDetails] = useState<any[]>();
+  const [estacaoInfo, setEstacaoInfo] = useState<any[]>();
+  const [estacaoDoc, setEstacaoDoc] = useState<any[]>();
   const [telaAtual, setTelaAtual] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const swiperRef = useRef<Swiper | null>(null);
 
-  console.log(id)
+  console.log(id);
 
-  const getEstacaoDetails = async() => {
+  const getEstacaoDetails = async () => {
     try {
-        const res = await api.get(`/estacoes/${id}`);
-        setEstacaoDetails(res.data["manutencao"]);
-        setEstacaoInfo(res.data);
-        console.log(res.data)
+      const res = await api.get(`/estacoes/${id}`);
+      setEstacaoDetails(res.data["manutencao"]);
+      setEstacaoInfo(res.data);
+      setEstacaoDoc(res.data["documentos"]);
+      // console.log(res.data["documentos"])
     } catch (error) {
-        console.log('Estacao', error)
+      console.log("Estacao", error);
     }
-}
+  };
 
-useEffect(() => {
-  getEstacaoDetails()
-}, [])
-
+  useEffect(() => {
+    getEstacaoDetails();
+  }, []);
 
   const nomesTelas = ["Manutenção", "Equipamentos", "Documentos"];
 
@@ -95,40 +105,75 @@ useEffect(() => {
         scrollEnabled
         scrollEventThrottle={16}
       >
-
-        <FlatList 
-        data={estacaoDetails}
-        keyExtractor={(item) => item.id}
-        renderItem={({item}) => (
-          <CardManutencao data={item}/>
-      )}
-      showsVerticalScrollIndicator={false}
-      _contentContainerStyle={{marginTop: 120, paddingBottom:130}}
-      ListEmptyComponent={() => (
-          <VStack flex={1} justifyContent='center' alignItems='center' mt='50%'>
-              <Text fontFamily='bold' fontSize={20} color='gray.300'>Não há manutenções cadastradas</Text>
-          </VStack>
-      )}
+        <FlatList
+          data={estacaoDetails}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <CardManutencao data={item} />}
+          showsVerticalScrollIndicator={false}
+          _contentContainerStyle={{ marginTop: "30%", paddingBottom: 130 }}
+          ListEmptyComponent={() => (
+            <VStack
+              flex={1}
+              justifyContent="center"
+              alignItems="center"
+              mt="50%"
+            >
+              <Text fontFamily="bold" fontSize={20} color="gray.300">
+                Não há manutenções cadastradas
+              </Text>
+            </VStack>
+          )}
         />
 
-
-        <ScrollView mt={120} scrollEventThrottle={16}>
+        <ScrollView mt={130} scrollEventThrottle={16}>
           <Equipamentos />
         </ScrollView>
 
-        <ScrollView mt={120} scrollEventThrottle={16}>
-          <Documentos />
-        </ScrollView>
+        <HStack mt="40%" alignItems='center'>
+          <FlatList
+            data={estacaoDoc}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <Documentos data={item} />}
+            showsVerticalScrollIndicator={false}
+            _contentContainerStyle={{  paddingBottom: 130 }}
+            ListEmptyComponent={() => (
+              <VStack
+                flex={1}
+                justifyContent="center"
+                alignItems="center"
+                mt="50%"
+              >
+                <Text fontFamily="bold" fontSize={20} color="gray.300">
+                  Não há documentos anexados
+                </Text>
+              </VStack>
+            )}
+          />
+          <ScrollView showsVerticalScrollIndicator={false} marginRight={5}>
+            <AlphabetFilter />
+          </ScrollView>
+        </HStack>
       </Swiper>
 
-      <HStack bgColor="white" h={7} alignItems="center" justifyContent="space-between" px={5}>
+      <HStack
+        bgColor="white"
+        h={7}
+        alignItems="center"
+        justifyContent="space-between"
+        px={5}
+      >
         {nomesTelas.map((nome, index) => {
           const isActive = telaAtual === index;
-          const textStyle = isActive ? { color: "#F59E0B" } : { color: "#3963F9" };
+          const textStyle = isActive
+            ? { color: "#F59E0B" }
+            : { color: "#3963F9" };
           const scale = isActive ? 1.2 : 0.8;
 
           return (
-            <TouchableOpacity key={index} onPress={() => handleTelaPress(index)}>
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleTelaPress(index)}
+            >
               <Animated.Text style={[textStyle, { transform: [{ scale }] }]}>
                 {nome}
               </Animated.Text>

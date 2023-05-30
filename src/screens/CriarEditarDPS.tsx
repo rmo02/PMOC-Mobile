@@ -16,7 +16,7 @@ export function CriarEditarDPS() {
     if (dps != undefined) {
       navigation.navigate("tipoEquipamento");
     } else {
-      navigation.navigate("estacaoDetails");
+      navigation.navigate("estacao");
     }
   }
 
@@ -44,7 +44,6 @@ export function CriarEditarDPS() {
       category: "Eletrica",
     };
     console.log(dados);
-    //Faça a requisição POST usando a biblioteca de sua escolha
     try {
       const res = await api.post("/DPS", dados);
       console.log(res.data);

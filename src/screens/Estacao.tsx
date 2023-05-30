@@ -25,7 +25,7 @@ export function Estacao () {
 
     return (
         <VStack flex={1} bg='fundo'>
-            <Header title="Estações" subtitle={estacoes?.length === 0 ? '0 Estações' : `${estacoes?.length} estações`}/>
+            <Header title="Estações" subtitle={estacoes?.length === undefined ? '0 Estações' : `${estacoes?.length} estações`}/>
             <FlatList 
             data={estacoes}
             keyExtractor={(item) => item.id}
