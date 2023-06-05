@@ -9,7 +9,7 @@ export function Eletrica () {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
 
     function HandleNavigateEditareletrica () {
-    //   navigation.navigate('')
+       navigation.navigate('equipamentoDetails')
     }
 
     return (
@@ -17,13 +17,13 @@ export function Eletrica () {
             <Text color='gray.300'>Elétrica</Text>
             <VStack bg='white' mt={2} borderRadius={10} py={2} px={5}>
 
-                <TouchableOpacity onPress={() => console.log('clicou')}>
+                <TouchableOpacity onPress={() => HandleNavigateEditareletrica()}>
                     <HStack alignItems='center'>
                         <Box bg='blue.600' borderRadius={50} alignItems='center' justifyContent='center' h={30} w={30}>
                             <Ionicons name="ios-pin" size={24} color="white" />
                         </Box>
                         <VStack px={5} flex={1}>
-                            <Text fontFamily='bold' fontSize='md'>NBR001</Text>
+                            <Text fontFamily='bold' fontSize='md'>DPS001</Text>
                             <Text fontSize='xs' color='gray.300'>Marca - Modelo</Text>
                         </VStack>
                         <Box flex={0.1}>

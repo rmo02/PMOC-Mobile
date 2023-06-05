@@ -36,6 +36,7 @@ import { CriarEditarCabo } from "@screens/CriarEditarCabo";
 import { CriarEditarTorre } from "@screens/CriarEditarTorre";
 import { CriarEditarDPS } from "@screens/CriarEditarDPS";
 import { TipoEquipamento } from "@screens/TipoEquipamento";
+import { EquipamentoDetails } from "@screens/EquipamentoDetails";
 
 type AppRoutes = {
   monitor: undefined;
@@ -44,7 +45,8 @@ type AppRoutes = {
   estacao: undefined;
   perfil: undefined;
   tipoEquipamento: undefined;
-  estacaoDetails: {id:string} ;
+  estacaoDetails: { id: string };
+  equipamentoDetails: undefined;
   criareditarEletrica: undefined;
   criareditarAntena: undefined;
   criareditarAr: undefined;
@@ -241,6 +243,12 @@ export function AppRoutes() {
       <Screen
         name="tipoEquipamento"
         component={TipoEquipamento}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="equipamentoDetails"
+        component={EquipamentoDetails}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>

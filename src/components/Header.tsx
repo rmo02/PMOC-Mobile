@@ -41,9 +41,11 @@ export function Header({ title, subtitle }: Props) {
               </HStack>
             </TouchableOpacity>
           </HStack>
-          <Text color="white" fontFamily="regular" fontSize="md">
-            Editar
-          </Text>
+          <TouchableOpacity>
+            <Text color="white" fontFamily="regular" fontSize="md">
+              Editar
+            </Text>
+          </TouchableOpacity>
         </HStack>
       ) : (
         <>

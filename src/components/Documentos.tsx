@@ -9,8 +9,8 @@ type Props = TouchableOpacityProps & {
 
 export function Documentos({ data, ...rest }: Props) {
   return (
-    <HStack px={5}>
-        <VStack bg='white' w='full'>
+    <HStack marginX={5} w='90%' bg='white' >
+        <VStack bg='white' w='full' >
             <VStack px={5} py={1}>
             <Text fontFamily='bold' fontSize='md'>{data.nome}</Text>
             <Text fontSize='xs' color='gray.300'>{data.descricao}</Text>
