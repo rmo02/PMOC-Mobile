@@ -7,6 +7,7 @@ import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { EditDPSForm } from "@components/EditDPSForm";
 import { useEffect, useState } from "react";
 import api from "@api/api";
+import { DPSDTO } from "src/dtos/DPSDTO";
 
 export function CriarEditarDPS() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
@@ -33,20 +34,22 @@ export function CriarEditarDPS() {
     }
   }
 
-  const onSubmit = async (data: any) => {
-    const dados = {
-      codigo: data.codigo,
-      marca: data.marca,
-      status: data.status,
-      modelo: data.modelo,
-      corrente_maxima: data.corrente_maxima,
-      classe: data.classe,
-      category: "Eletrica",
-    };
-    console.log(dados);
+  const onSubmit = async (data: DPSDTO) => {
+    const dadosDPS = 
+      {
+        dados_gerais: {
+          "codigo": data.dados_gerais.codigo,
+          "marca": data.dados_gerais.marca,
+          "modelo": data.dados_gerais.modelo,
+        },
+        "status": data.status,
+        "corrente_maxima": +data.corrente_maxima,
+        "classe": data.classe,
+        "category": "Eletrica",
+      }
+    console.log(dadosDPS)
     try {
-      const res = await api.post("/DPS", dados);
-      console.log(res.data);
+      const res = await api.post("/DPS", dadosDPS);
     } catch (error) {
       console.log(error);
     }

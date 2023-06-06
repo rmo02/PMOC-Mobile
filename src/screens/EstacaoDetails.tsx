@@ -14,6 +14,7 @@ import Swiper from "react-native-swiper";
 import { CardManutencao } from "@components/CardManutencao";
 import { Documentos } from "@components/Documentos";
 import { Equipamentos } from "@components/Equipamentos";
+
 import { Header } from "@components/Header";
 import api from "@api/api";
 import { AlphabetFilter } from "@components/AlphabetFilter";
@@ -27,7 +28,6 @@ export function EstacaoDetails({ route }: any) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const swiperRef = useRef<Swiper | null>(null);
 
-  console.log(id);
 
   const getEstacaoDetails = async () => {
     try {
@@ -35,7 +35,6 @@ export function EstacaoDetails({ route }: any) {
       setEstacaoDetails(res.data["manutencao"]);
       setEstacaoInfo(res.data);
       setEstacaoDoc(res.data["documentos"]);
-      // console.log(res.data["documentos"])
     } catch (error) {
       console.log("Estacao", error);
     }
@@ -70,6 +69,7 @@ export function EstacaoDetails({ route }: any) {
         marginX={5}
         mt={120}
         borderRadius={10}
+        shadow={5}
       >
         <Heading color="blue.600" fontFamily="bold" fontSize="xl">
           Estação Cururupu
@@ -110,7 +110,7 @@ export function EstacaoDetails({ route }: any) {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <CardManutencao data={item} />}
           showsVerticalScrollIndicator={false}
-          _contentContainerStyle={{ marginTop: "30%", paddingBottom: 130 }}
+          _contentContainerStyle={{ marginTop: "25%", paddingBottom: 130 }}
           ListEmptyComponent={() => (
             <VStack
               flex={1}

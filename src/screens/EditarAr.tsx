@@ -1,20 +1,19 @@
-import { Button } from "@components/Button";
-import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { Header } from "@components/Header";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditAntenaForm } from "@components/EditAntenaForm";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { EditArForm } from "@components/EditArForm";
 import { useState } from "react";
 
-
-export function CriarEditarAntena() {
+export function EditarAr() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [ antena, setAntena ] = useState<any[]>([{}]);
+  const [ar, setAr] = useState<any[]>([{}]);
 
   function HandleNavigateGoBack() {
-    if(antena != undefined) {
-    navigation.navigate("tipoEquipamento");
+    if (ar != undefined) {
+      navigation.navigate("tipoEquipamento");
     }
   }
 
@@ -24,14 +23,11 @@ export function CriarEditarAntena() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "gain": data.gain,
-      "fendas":data.fendas,
-      "tipo": data.tipo,
-      "vr": data.vr,
-      "posicao_torre": data.posicao_torre,
-      "category": "Irradiação",
+      "potencia": data.potencia,
+      "tensao": data.tensao,
+      "category": "Refrigeração",
     };
-    
+    console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
     // try {
     //   const res = await api.post('/exaustores',dados
@@ -41,14 +37,14 @@ export function CriarEditarAntena() {
     //   console.log(error);
     // }
   };
-      
+
   return (
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1400}>
+      <VStack flex={1} bg="fundo" position="relative" h={1150}>
         <VStack
           pt={8}
           pb={20}
@@ -71,12 +67,12 @@ export function CriarEditarAntena() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {antena != undefined ? "Nova Antena" : "Antena001"}
+                {ar != undefined ? "Novo ARC" : "ARC001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditAntenaForm onSubmit={onSubmit} />
+        <EditArForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

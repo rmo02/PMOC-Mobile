@@ -181,7 +181,7 @@ export function EditDPSForm({ onSubmit, DPS, onSubmitUpdate, onDelete }: any) {
                 <Input
                   errorMessage={errors.corrente_maxima?.message}
                   onChangeText={onChange}
-                  value={value}
+                  value={`${value}`}
                   placeholder="4"
                   keyboardType="decimal-pad"
                   InputRightElement={

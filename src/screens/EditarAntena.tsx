@@ -8,7 +8,7 @@ import { EditAntenaForm } from "@components/EditAntenaForm";
 import { useState } from "react";
 
 
-export function CriarEditarAntena() {
+export function EditarAntena() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
   const [ antena, setAntena ] = useState<any[]>([{}]);
 
@@ -31,7 +31,7 @@ export function CriarEditarAntena() {
       "posicao_torre": data.posicao_torre,
       "category": "Irradiação",
     };
-    
+    console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
     // try {
     //   const res = await api.post('/exaustores',dados
