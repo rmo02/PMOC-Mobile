@@ -1,23 +1,19 @@
+import { Button } from "@components/Button";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { EditEletricaForm } from "@components/EditEletricaForm";
-import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
-import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { MaterialIcons } from "@expo/vector-icons";
+import { EditCombinadorForm } from "@components/EditCombinadorForm";
 import { useState } from "react";
 
-export function CriarEditarEletrica() {
-  const [nobreak, setNobreak] = useState<any>([{}]);
-  const navigation = useNavigation<AppNavigatorRoutesProps>();
 
+export function EditarCombinador() {
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [ combinador, setCombinador ] = useState<any[]>([{}]);
 
   function HandleNavigateGoBack() {
-    if(nobreak != undefined) {
     navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
   }
 
   const onSubmit = async (data: any) => {
@@ -26,9 +22,7 @@ export function CriarEditarEletrica() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "tensao_entrada": data.tensao_entrada,
-      "tensao_saida": data.tensao_saida,
-      "category": "Eletrica",
+      "category": "Irradiação",
     };
     console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
@@ -40,14 +34,14 @@ export function CriarEditarEletrica() {
     //   console.log(error);
     // }
   };
-
+      
   return (
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1200}>
+      <VStack flex={1} bg="fundo" position="relative" h={900}>
         <VStack
           pt={8}
           pb={20}
@@ -70,12 +64,12 @@ export function CriarEditarEletrica() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {nobreak != undefined ? "Novo Nobreak" : "Nobreak001"}
+                {combinador != undefined ? "Novo Combinador" : "COMB001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditEletricaForm onSubmit={onSubmit} />
+        <EditCombinadorForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

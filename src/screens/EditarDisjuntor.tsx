@@ -1,44 +1,48 @@
-import { Header } from "@components/Header";
-import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import {
+  Center,
+  HStack,
+  Heading,
+  ScrollView,
+  Text,
+  VStack,
+} from "native-base";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { EditSwitchForm } from "@components/EditSwitchForm";
+import { EditDisjuntorForm } from "@components/EditDisjuntorForm";
 import { useState } from "react";
 
-export function CriarEditarSwitch() {
-  const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [switchs, setsWitchs] = useState<any[]>([{}]);
+export function EditarDisjuntor() {
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [ disjuntor, setDisjuntor ] = useState<any[]>([])
 
-  function HandleNavigateGoBack() {
-    if (switchs != undefined) {
+
+    function HandleNavigateGoBack() {
       navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
     }
-  }
 
-  const onSubmit = async (data: any) => {
-    const dados = {
-      "codigo": data.codigo,
-      "status": data.status,
-      "marca": data.marca,
-      "modelo": data.modelo,
-      "quantidade_portas": data.quantidade_portas,
-      "category": "Telemetria",
+    const onSubmit = async (data: any) => {
+      const dados = {
+        "codigo": data.codigo,
+        "status": data.status,
+        "marca": data.marca,
+        "modelo": data.modelo,
+        "corrente_maxima": data.corrente_maxima,
+        "category": "Eletrica",
+      };
+      console.log(dados);
+      // Faça a requisição POST usando a biblioteca de sua escolha
+      // try {
+      //   const res = await api.post('/exaustores',dados
+      //   );
+      //   console.log(res.data);
+      // } catch (error) {
+      //   console.log(error);
+      // }
     };
-    console.log(dados);
-    // Faça a requisição POST usando a biblioteca de sua escolha
-    // try {
-    //   const res = await api.post('/exaustores',dados
-    //   );
-    //   console.log(res.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
+
 
   return (
     <ScrollView
@@ -46,7 +50,7 @@ export function CriarEditarSwitch() {
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={900}>
+      <VStack flex={1} bg="fundo" position="relative" h={1000}>
         <VStack
           pt={8}
           pb={20}
@@ -69,12 +73,12 @@ export function CriarEditarSwitch() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {switchs != undefined ? "Novo Switch" : "Switch001"}
+                {disjuntor != undefined ? "Novo Disjuntor" : "Disj001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditSwitchForm onSubmit={onSubmit} />
+        <EditDisjuntorForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

@@ -1,21 +1,20 @@
+import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditTransmissorForm } from "@components/EditTransmissorForm";
+import { EditReceptorForm } from "@components/EditReceptorForm";
 import { useState } from "react";
 
-export function CriarEditarTransmissor() {
-  const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [transmissor, setTransmissor] = useState<any[]>([{}]);
+
+export function EditarReceptor() {
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [receptor, setReceptor ] = useState<any[]>([{}]);
+
 
   function HandleNavigateGoBack() {
-    if (transmissor != undefined) {
-      navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
+    navigation.navigate("tipoEquipamento");
   }
 
   const onSubmit = async (data: any) => {
@@ -24,11 +23,11 @@ export function CriarEditarTransmissor() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "programmed_power": data.programmed_power,
-      "canal_fisico": data.canal_fisico,
-      "canal_virtual": data.canal_virtual,
-      "receptor": data.receptor,
-      "antena": data.antena,
+      "channel": data.channel,
+      "frequency": data.frequency,
+      "symbolRate": data.symbolRate,
+      "transmissor": data.transmissor,
+      "parabolica": data.parabolica,
       "category": "Irradiação",
     };
     console.log(dados);
@@ -41,8 +40,9 @@ export function CriarEditarTransmissor() {
     //   console.log(error);
     // }
   };
-
+      
   return (
+
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
@@ -71,13 +71,14 @@ export function CriarEditarTransmissor() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {transmissor != undefined ? "Novo Transmissor" : "TRANS001"}
+                {receptor != undefined ? "Novo Receptor" : "Receptor001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditTransmissorForm onSubmit={onSubmit} />
+        <EditReceptorForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
+
   );
 }

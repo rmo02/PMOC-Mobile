@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import api from "@api/api";
 import { DPSDTO } from "src/dtos/DPSDTO";
 
-export function CriarEditarDPS() {
+export function CriarDPS() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
   const [dps, setDps] = useState<any[]>([]);
 

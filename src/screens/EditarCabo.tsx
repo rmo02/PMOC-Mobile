@@ -1,46 +1,25 @@
-import { Header } from "@components/Header";
-import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
-import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import { Button } from "@components/Button";
-import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { EditExaustorForm } from "@components/EditExaustorForm";
-import { useState } from "react";
-import api from "@api/api";
+import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
+import { TouchableOpacity, LogBox } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { EditCaboForm } from "@components/EditCaboForm";
+import { useEffect, useState } from "react";
 
-export function CriarEditarExaustor() {
+export function EditarCabo() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [exaustor, setExaustor] = useState<any[]>([]);
-
-  function HandleNavigateGoBack() {
-    if (exaustor != undefined) {
-      navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
-  }
-
-  const getExaustores = async () => {
-    // try {
-    //   const res = await api.get('/exaustores', {
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     }
-    //   });
-    //   setExaustor(res.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
+  const [cabo, setCabo] = useState<any[]>([]);
 
   const onSubmit = async (data: any) => {
     const dados = {
-      codigo: data.codigo,
-      status: data.status,
-      marca: data.marca,
-      modelo: data.modelo,
-      category: "Refrigeração",
+      "codigo": data.codigo,
+      "status": data.status,
+      "marca": data.marca,
+      "modelo": data.modelo,
+      "tipo": data.tipo,
+      "tamanho": data.tamanho,
+      "category": "Irradiação",
     };
     console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
@@ -53,9 +32,11 @@ export function CriarEditarExaustor() {
     // }
   };
 
-  // useEffect(() => {
-  //   getExaustores()
-  // }, [])
+
+
+  function HandleNavigateGoBack() {
+      navigation.navigate("tipoEquipamento");
+  }
 
   return (
     <ScrollView
@@ -63,7 +44,7 @@ export function CriarEditarExaustor() {
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={800}>
+      <VStack flex={1} bg="fundo" position="relative" h={1000}>
         <VStack
           pt={8}
           pb={20}
@@ -86,12 +67,12 @@ export function CriarEditarExaustor() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {exaustor != undefined ? "Novo Exaustor" : "EXAU001"}
+                {cabo != undefined ? "Novo Cabo" : "Cabo001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditExaustorForm onSubmit={onSubmit} />
+        <EditCaboForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

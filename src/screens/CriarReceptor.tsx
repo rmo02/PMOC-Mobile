@@ -4,18 +4,17 @@ import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditAntenaForm } from "@components/EditAntenaForm";
+import { EditReceptorForm } from "@components/EditReceptorForm";
 import { useState } from "react";
 
 
-export function CriarEditarAntena() {
-  const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [ antena, setAntena ] = useState<any[]>([{}]);
+export function CriarReceptor() {
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
+    const [receptor, setReceptor ] = useState<any[]>([{}]);
+
 
   function HandleNavigateGoBack() {
-    if(antena != undefined) {
     navigation.navigate("tipoEquipamento");
-    }
   }
 
   const onSubmit = async (data: any) => {
@@ -24,14 +23,14 @@ export function CriarEditarAntena() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "gain": data.gain,
-      "fendas":data.fendas,
-      "tipo": data.tipo,
-      "vr": data.vr,
-      "posicao_torre": data.posicao_torre,
+      "channel": data.channel,
+      "frequency": data.frequency,
+      "symbolRate": data.symbolRate,
+      "transmissor": data.transmissor,
+      "parabolica": data.parabolica,
       "category": "Irradiação",
     };
-    
+    console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
     // try {
     //   const res = await api.post('/exaustores',dados
@@ -43,12 +42,13 @@ export function CriarEditarAntena() {
   };
       
   return (
+
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1400}>
+      <VStack flex={1} bg="fundo" position="relative" h={1500}>
         <VStack
           pt={8}
           pb={20}
@@ -71,13 +71,14 @@ export function CriarEditarAntena() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {antena != undefined ? "Nova Antena" : "Antena001"}
+                {receptor != undefined ? "Novo Receptor" : "Receptor001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditAntenaForm onSubmit={onSubmit} />
+        <EditReceptorForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
+
   );
 }

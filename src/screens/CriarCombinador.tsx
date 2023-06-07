@@ -8,16 +8,12 @@ import { EditCombinadorForm } from "@components/EditCombinadorForm";
 import { useState } from "react";
 
 
-export function CriarEditarCombinador() {
+export function CriarCombinador() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
     const [ combinador, setCombinador ] = useState<any[]>([{}]);
 
   function HandleNavigateGoBack() {
-    if(combinador != undefined) {
     navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    } 
   }
 
   const onSubmit = async (data: any) => {

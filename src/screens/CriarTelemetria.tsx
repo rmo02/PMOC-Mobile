@@ -2,21 +2,18 @@ import { Header } from "@components/Header";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
-import { EditArForm } from "@components/EditArForm";
+import { EditTelemetriaForm } from "@components/EditTelemetriaForm";
 import { useState } from "react";
 
-export function CriarEditarAr() {
+export function CriarTelemetria() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [ar, setAr] = useState<any[]>([{}]);
+  const [telemetria, setTelemetria] = useState<any[]>([{}]);
 
   function HandleNavigateGoBack() {
-    if (ar != undefined) {
       navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
   }
 
   const onSubmit = async (data: any) => {
@@ -25,9 +22,7 @@ export function CriarEditarAr() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "potencia": data.potencia,
-      "tensao": data.tensao,
-      "category": "Refrigeração",
+      "category": "Telemetria",
     };
     console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
@@ -46,7 +41,7 @@ export function CriarEditarAr() {
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1150}>
+      <VStack flex={1} bg="fundo" position="relative" h={900}>
         <VStack
           pt={8}
           pb={20}
@@ -69,12 +64,12 @@ export function CriarEditarAr() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {ar != undefined ? "Novo ARC" : "ARC001"}
+                {telemetria != undefined ? "Nova Telemetria" : "TELE001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditArForm onSubmit={onSubmit} />
+        <EditTelemetriaForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

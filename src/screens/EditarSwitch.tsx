@@ -1,15 +1,20 @@
-import { Button } from "@components/Button";
-import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { Header } from "@components/Header";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
-import { TouchableOpacity, LogBox } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditCaboForm } from "@components/EditCaboForm";
-import { useEffect, useState } from "react";
+import { Button } from "@components/Button";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { EditSwitchForm } from "@components/EditSwitchForm";
+import { useState } from "react";
 
-export function CriarEditarCabo() {
+export function EditarSwitch() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const [cabo, setCabo] = useState<any[]>([]);
+  const [switchs, setsWitchs] = useState<any[]>([{}]);
+
+  function HandleNavigateGoBack() {
+      navigation.navigate("tipoEquipamento");
+  }
 
   const onSubmit = async (data: any) => {
     const dados = {
@@ -17,9 +22,8 @@ export function CriarEditarCabo() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "tipo": data.tipo,
-      "tamanho": data.tamanho,
-      "category": "Irradiação",
+      "quantidade_portas": data.quantidade_portas,
+      "category": "Telemetria",
     };
     console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
@@ -32,23 +36,13 @@ export function CriarEditarCabo() {
     // }
   };
 
-
-
-  function HandleNavigateGoBack() {
-    if (cabo != undefined) {
-      navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
-  }
-
   return (
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1000}>
+      <VStack flex={1} bg="fundo" position="relative" h={900}>
         <VStack
           pt={8}
           pb={20}
@@ -71,12 +65,12 @@ export function CriarEditarCabo() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {cabo != undefined ? "Novo Cabo" : "Cabo001"}
+                {switchs != undefined ? "Novo Switch" : "Switch001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditCaboForm onSubmit={onSubmit} />
+        <EditSwitchForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

@@ -1,24 +1,23 @@
-import { Button } from "@components/Button";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditReceptorForm } from "@components/EditReceptorForm";
+import { EditParabolicaForm } from "@components/EditParabolicaForm";
 import { useState } from "react";
 
 
-export function CriarEditarReceptor() {
+export function CriarParabolica() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
-    const [receptor, setReceptor ] = useState<any[]>([{}]);
-
+    const [parabolica, setParabolica ] = useState<any[]>([{}])
 
   function HandleNavigateGoBack() {
-    if(receptor != undefined) {
+    if(parabolica != undefined) {
     navigation.navigate("tipoEquipamento");
     } else {
       navigation.navigate("estacaoDetails");
     }
+    
   }
 
   const onSubmit = async (data: any) => {
@@ -27,11 +26,9 @@ export function CriarEditarReceptor() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "channel": data.channel,
-      "frequency": data.frequency,
-      "symbolRate": data.symbolRate,
-      "transmissor": data.transmissor,
-      "parabolica": data.parabolica,
+      "diametro": data.diametro,
+      "satelite": data.satelite,
+      "receptor": data.receptor,
       "category": "Irradiação",
     };
     console.log(dados);
@@ -46,13 +43,12 @@ export function CriarEditarReceptor() {
   };
       
   return (
-
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1500}>
+      <VStack flex={1} bg="fundo" position="relative" h={1200}>
         <VStack
           pt={8}
           pb={20}
@@ -75,14 +71,13 @@ export function CriarEditarReceptor() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {receptor != undefined ? "Novo Receptor" : "Receptor001"}
+                {parabolica != undefined ? "Nova Parabólica" : "Parabólica001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditReceptorForm onSubmit={onSubmit} />
+        <EditParabolicaForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
-
   );
 }

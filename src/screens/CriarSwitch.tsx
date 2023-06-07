@@ -1,20 +1,20 @@
-import { Button } from "@components/Button";
-import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { Header } from "@components/Header";
 import { Center, HStack, Heading, ScrollView, Text, VStack } from "native-base";
 import { TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { EditTorreForm } from "@components/EditTorreForm";
+import { Button } from "@components/Button";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
+import { EditSwitchForm } from "@components/EditSwitchForm";
 import { useState } from "react";
 
-
-export function CriarEditarTorre() {
-    const navigation = useNavigation<AppNavigatorRoutesProps>();
-    const [ torre, setTorre ] = useState<any[]>([{}]);
+export function CriarSwitch() {
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+  const [switchs, setsWitchs] = useState<any[]>([{}]);
 
   function HandleNavigateGoBack() {
-    if(torre != undefined) {
-    navigation.navigate("tipoEquipamento");
+    if (switchs != undefined) {
+      navigation.navigate("tipoEquipamento");
     } else {
       navigation.navigate("estacaoDetails");
     }
@@ -26,10 +26,8 @@ export function CriarEditarTorre() {
       "status": data.status,
       "marca": data.marca,
       "modelo": data.modelo,
-      "tipo_estrutura": data.tipo_estrutura,
-      "altura": data.altura,
-      "aterramento": data.aterramento,
-      "category": "Irradiação",
+      "quantidade_portas": data.quantidade_portas,
+      "category": "Telemetria",
     };
     console.log(dados);
     // Faça a requisição POST usando a biblioteca de sua escolha
@@ -41,14 +39,14 @@ export function CriarEditarTorre() {
     //   console.log(error);
     // }
   };
-      
+
   return (
     <ScrollView
       bg="fundo"
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
     >
-      <VStack flex={1} bg="fundo" position="relative" h={1300}>
+      <VStack flex={1} bg="fundo" position="relative" h={900}>
         <VStack
           pt={8}
           pb={20}
@@ -71,12 +69,12 @@ export function CriarEditarTorre() {
             </TouchableOpacity>
             <Center flex={0.7}>
               <Heading pt={5} color="white" fontFamily="bold">
-                {torre != undefined ? "Nova Torre" : "Torre001"}
+                {switchs != undefined ? "Novo Switch" : "Switch001"}
               </Heading>
             </Center>
           </HStack>
         </VStack>
-        <EditTorreForm onSubmit={onSubmit} />
+        <EditSwitchForm onSubmit={onSubmit} />
       </VStack>
     </ScrollView>
   );

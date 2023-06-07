@@ -17,24 +17,24 @@ import { Novo } from "@screens/Novo";
 import { ButtonNew } from "@components/ButtonNew";
 import { EstacaoDetails } from "@screens/EstacaoDetails";
 
-import { CriarEditarEletrica } from "@screens/CriarEditarEletrica";
-import { CriarEditarAntena } from "@screens/CriarEditarAntena";
-import { CriarEditarAr } from "@screens/CriarEditarAr";
+import { CriarEletrica } from "@screens/CriarEletrica";
+import { CriarAntena } from "@screens/CriarAntena";
+import { CriarAr } from "@screens/CriarAr";
 
-import { CriarEditarExaustor } from "@screens/CriarEditarExaustor";
-import { CriarEditarSwitch } from "@screens/CriarEditarSwitch";
-import { CriarEditarTelemetria } from "@screens/CriarEditarTelemetria";
+import { CriarExaustor } from "@screens/CriarExaustor";
+import { CriarSwitch } from "@screens/CriarSwitch";
+import { CriarTelemetria } from "@screens/CriarTelemetria";
 
-import { CriarEditarDisjuntor } from "@screens/CriarEditarDisjuntor";
-import { CriarEditarParabolica } from "@screens/CriarEditarParabolica";
-import { CriarEditarReceptor } from "@screens/CriarEditarReceptor";
+import { CriarDisjuntor } from "@screens/CriarDisjuntor";
+import { CriarParabolica } from "@screens/CriarParabolica";
+import { CriarReceptor } from "@screens/CriarReceptor";
 
-import { CriarEditarTransmissor } from "@screens/CriarEditarTransmissor";
-import { CriarEditarCombinador } from "@screens/CriarEditarCombinador";
-import { CriarEditarCabo } from "@screens/CriarEditarCabo";
+import { CriarTransmissor } from "@screens/CriarTransmissor";
+import { CriarCombinador } from "@screens/CriarCombinador";
+import { CriarCabo } from "@screens/CriarCabo";
 
-import { CriarEditarTorre } from "@screens/CriarEditarTorre";
-import { CriarEditarDPS } from "@screens/CriarEditarDPS";
+import { CriarTorre } from "@screens/CriarTorre";
+import { CriarDPS } from "@screens/CriarDPS";
 import { TipoEquipamento } from "@screens/TipoEquipamento";
 import { EquipamentoDetails } from "@screens/EquipamentoDetails";
 
@@ -47,20 +47,20 @@ type AppRoutes = {
   tipoEquipamento: undefined;
   estacaoDetails: { id: string };
   equipamentoDetails: undefined;
-  criareditarEletrica: undefined;
-  criareditarAntena: undefined;
-  criareditarAr: undefined;
-  criareditarExaustor: undefined;
-  criareditarSwitch: undefined;
-  criareditarTelemetria: undefined;
-  criareditarDisjuntor: undefined;
-  criareditarParabolica: undefined;
-  criareditarReceptor: undefined;
-  criareditarTransmissor: undefined;
-  criareditarCombinador: undefined;
-  criareditarCabo: undefined;
-  criareditarTorre: undefined;
-  criareditarDPS: undefined;
+  criarEletrica: undefined;
+  criarAntena: undefined;
+  criarAr: undefined;
+  criarExaustor: undefined;
+  criarSwitch: undefined;
+  criarTelemetria: undefined;
+  criarDisjuntor: undefined;
+  criarParabolica: undefined;
+  criarReceptor: undefined;
+  criarTransmissor: undefined;
+  criarCombinador: undefined;
+  criarCabo: undefined;
+  criarTorre: undefined;
+  criarDPS: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -157,86 +157,86 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="criareditarEletrica"
-        component={CriarEditarEletrica}
+        name="criarEletrica"
+        component={CriarEletrica}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarAntena"
-        component={CriarEditarAntena}
+        name="criarAntena"
+        component={CriarAntena}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarAr"
-        component={CriarEditarAr}
+        name="criarAr"
+        component={CriarAr}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarExaustor"
-        component={CriarEditarExaustor}
+        name="criarExaustor"
+        component={CriarExaustor}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarSwitch"
-        component={CriarEditarSwitch}
+        name="criarSwitch"
+        component={CriarSwitch}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarTelemetria"
-        component={CriarEditarTelemetria}
+        name="criarTelemetria"
+        component={CriarTelemetria}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarDisjuntor"
-        component={CriarEditarDisjuntor}
+        name="criarDisjuntor"
+        component={CriarDisjuntor}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarParabolica"
-        component={CriarEditarParabolica}
+        name="criarParabolica"
+        component={CriarParabolica}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarReceptor"
-        component={CriarEditarReceptor}
+        name="criarReceptor"
+        component={CriarReceptor}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarTransmissor"
-        component={CriarEditarTransmissor}
+        name="criarTransmissor"
+        component={CriarTransmissor}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarCombinador"
-        component={CriarEditarCombinador}
+        name="criarCombinador"
+        component={CriarCombinador}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarCabo"
-        component={CriarEditarCabo}
+        name="criarCabo"
+        component={CriarCabo}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarTorre"
-        component={CriarEditarTorre}
+        name="criarTorre"
+        component={CriarTorre}
         options={{ tabBarButton: () => null }}
       />
 
       <Screen
-        name="criareditarDPS"
-        component={CriarEditarDPS}
+        name="criarDPS"
+        component={CriarDPS}
         options={{ tabBarButton: () => null }}
       />
 

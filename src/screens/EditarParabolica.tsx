@@ -7,17 +7,12 @@ import { EditParabolicaForm } from "@components/EditParabolicaForm";
 import { useState } from "react";
 
 
-export function CriarEditarParabolica() {
+export function EditarParabolica() {
     const navigation = useNavigation<AppNavigatorRoutesProps>();
     const [parabolica, setParabolica ] = useState<any[]>([{}])
 
   function HandleNavigateGoBack() {
-    if(parabolica != undefined) {
     navigation.navigate("tipoEquipamento");
-    } else {
-      navigation.navigate("estacaoDetails");
-    }
-    
   }
 
   const onSubmit = async (data: any) => {
