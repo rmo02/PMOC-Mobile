@@ -18,15 +18,16 @@ export function Estacoes({data, ...rest} : Props) {
 
 
   return (
-  <TouchableOpacity onPress={() => HandleNavigateEstacaoDetail(data)} {...rest}>
+  <TouchableOpacity style={{backgroundColor:'white', marginHorizontal:6, borderRadius:2}} onPress={() => HandleNavigateEstacaoDetail(data)} {...rest}>
     <VStack 
     pt={3}
     pb={1}
     px={2}
     marginX={6}
     bgColor='white'
+    
     >
-      <HStack justifyContent='space-between'>
+      <HStack justifyContent='space-between' >
         <Text color="black" fontFamily="bold" fontSize='md'>{data.nome}</Text>
         <MaterialIcons name="arrow-forward-ios" size={20} color="gray" />
       </HStack>

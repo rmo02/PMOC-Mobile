@@ -38,6 +38,44 @@ import { CriarDPS } from "@screens/CriarDPS";
 import { TipoEquipamento } from "@screens/TipoEquipamento";
 import { EquipamentoDetails } from "@screens/EquipamentoDetails";
 
+import { EditarAntena } from "@screens/EditarAntena";
+import { EditarAr } from "@screens/EditarAr";
+import { EditarCabo } from "@screens/EditarCabo";
+
+import { EditarCombinador } from "@screens/EditarCombinador";
+import { EditarDisjuntor } from "@screens/EditarDisjuntor";
+import { EditarDPS } from "@screens/EditarDPS";
+
+import { EditarEletrica } from "@screens/EditarEletrica";
+import { EditarExaustor } from "@screens/EditarExaustor";
+import { EditarParabolica } from "@screens/EditarParabolica";
+
+import { EditarReceptor } from "@screens/EditarReceptor";
+import { EditarSwitch } from "@screens/EditarSwitch";
+import { EditarTelemetria } from "@screens/EditarTelemetria";
+
+import { EditarTorre } from "@screens/EditarTorre";
+import { EditarTransmissor } from "@screens/EditarTransmissor";
+import { AntenaDTO } from "src/dtos/AntenaDTO";
+
+import { ArCondionadoDTO } from "src/dtos/ArCondiconadoDTO";
+import { CaboDTO } from "src/dtos/CaboDTO";
+import { CombinadoDTO } from "src/dtos/CombinadorDTO";
+
+import { DisjuntosDTO } from "src/dtos/DisjuntorDTO";
+import { DPSDTO } from "src/dtos/DPSDTO";
+import { NobreakDTO } from "src/dtos/NobreakDTO";
+
+import { ExaustorDTO } from "src/dtos/ExaustorDTO";
+import { ParabolicaDTO } from "src/dtos/ParabolicaDTO";
+import { ReceptorDTO } from "src/dtos/ReceptorDTO";
+
+import { SwitchDTO } from "src/dtos/SwitchDTO";
+import { TelemetriaDTO } from "src/dtos/TelemetriaDTO";
+import { TorreDTO } from "src/dtos/TorreDTO";
+
+import { TransmissorDTO } from "src/dtos/TransmissorDTO";
+
 type AppRoutes = {
   monitor: undefined;
   manutencao: undefined;
@@ -61,6 +99,21 @@ type AppRoutes = {
   criarCabo: undefined;
   criarTorre: undefined;
   criarDPS: undefined;
+  editarAntena: AntenaDTO;
+  editarAr: ArCondionadoDTO;
+  editarCabo: CaboDTO;
+  editarCombinador: CombinadoDTO;
+  editarDisjuntor: DisjuntosDTO;
+  editarDPS: DPSDTO;
+  editarEletrica: NobreakDTO;
+  editarExaustor: ExaustorDTO;
+  editarParabolica: ParabolicaDTO;
+  editarReceptor: ReceptorDTO;
+  editarSwitch: SwitchDTO;
+  editarTelemetria: TelemetriaDTO;
+  editarTorre: TorreDTO;
+  editarTransmissor: TransmissorDTO;
+
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -249,6 +302,90 @@ export function AppRoutes() {
       <Screen
         name="equipamentoDetails"
         component={EquipamentoDetails}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarAntena"
+        component={EditarAntena}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarAr"
+        component={EditarAr}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarCabo"
+        component={EditarCabo}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarCombinador"
+        component={EditarCombinador}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarDisjuntor"
+        component={EditarDisjuntor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarDPS"
+        component={EditarDPS}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarEletrica"
+        component={EditarEletrica}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarExaustor"
+        component={EditarExaustor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarParabolica"
+        component={EditarParabolica}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarReceptor"
+        component={EditarReceptor}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarSwitch"
+        component={EditarSwitch}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarTelemetria"
+        component={EditarTelemetria}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarTorre"
+        component={EditarTorre}
+        options={{ tabBarButton: () => null }}
+      />
+
+      <Screen
+        name="editarTransmissor"
+        component={EditarTransmissor}
         options={{ tabBarButton: () => null }}
       />
     </Navigator>
